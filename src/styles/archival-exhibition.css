@@ -1,0 +1,69 @@
+.exhibition-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #fdfaf3;
+}
+
+.exhibition-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal-box {
+  position: relative;
+  width: 85%;
+  height: 80%;
+  overflow: hidden;
+  visibility: hidden; /* autoAlpha in GSAP handles the visibility */
+}
+
+.reveal-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.3);
+}
+
+.exhibition-title-container {
+    position: absolute;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    text-align: center;
+}
+
+.exhibition-title {
+    color: #C5A059; /* text-gold */
+    letter-spacing: 0.8em;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.exhibition-heading {
+    font-size: 3rem; /* text-5xl fallback */
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: #121212; /* text-obsidian */
+    line-height: 1.25;
+}
+
+@media (min-width: 768px) {
+    .exhibition-heading {
+        font-size: 6rem; /* text-8xl fallback */
+    }
+}
+
+/* 3D Flip Helpers */
+.perspective-2000 { perspective: 2000px; }
+.backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.preserve-3d { transform-style: preserve-3d; }

@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="col">
+    <div class="card">
+      <div class="card__side card__side--front card__side--front-1">
+        <div class="frame">
+          <p>Flower</p>
+        </div>
+      </div>
+      <div class="card__side card__side--back card__side--back-1">
+        <div class="frame">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus cum maiores atque ducimus unde modi accusantium, ipsam facere officia aliquid corrupti reiciendis quae odio consectetur molestiae quidem velit sequi magnam.</p>
+          <small>&diams; Flower &diams;</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card__side card__side--front card__side--front-2">
+        <div class="frame">
+          <p>Travel</p>
+        </div>
+      </div>
+      <div class="card__side card__side--back card__side--back-2">
+        <div class="frame">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores amet hic sunt error labore, ullam eligendi deleniti quisquam similique ex quae saepe suscipit nesciunt cum molestias velit magnam? Libero, at.</p>
+          <small>&spades; Travel &spades;</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card__side card__side--front card__side--front-3">
+        <div class="frame">
+          <p>Food</p>
+        </div>
+      </div>
+      <div class="card__side card__side--back card__side--back-3">
+        <div class="frame">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores amet hic sunt error labore, ullam eligendi deleniti quisquam similique ex quae saepe suscipit nesciunt cum molestias velit magnam? Libero, at. Adipisicing elit. Asperiores amet hic sunt error labore, ullam.</p>
+          <small>&hearts; Food &hearts;</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="explanation">
+  <article>
+  <h1>How to create Flip Card Animation</h1>
+  <ul>
+    <li>Inside the card element, create 2 DIVs representing the card's front and back sides</li>
+    <li>Set absolute positioning for both card-side elements with <code>top</code> and <code>left</code> properties set to 0 to position them in the same location as the card.</li>
+    <li>Add <code>backface-visibility: hidden</code> to hide the back side of the card.</li>
+    <li>Rotate the back-side element 180 degrees.</li>
+    <li>When the card is hovered over, rotate the front-side to -180 degrees and the back-side to 0 degrees.</li>
+    <li>Don't forget to add <code>perspective</code> for the card element to give a 3D-positioned element some perspective</li>
+  </ul>
+  </article>
+  <article class="note">
+    <h1>&excl; Please consider Responsive design &excl;</h1>
+    <ul>
+      <li>For touch devices, such as mobile screens, this flip animation may not be suitable.</li>
+      <li>For this demonstration, I've implemented a special design for mobile screens. When the screen size is equal to or smaller than 600px, the animation is disabled and the card design changes.</li>
+    </ul>
+  </article>
+</div>

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@source '../**/*.{js,ts,jsx,tsx}';
+
+@theme {
+  --color-obsidian: #121212;
+  --color-gold: #C5A059;
+  --color-cream: #F5F5F0;
+
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Outfit', 'Poppins', sans-serif;
+}
+
+@import 'tw-animate-css';
