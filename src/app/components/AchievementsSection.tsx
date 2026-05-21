@@ -282,7 +282,7 @@ export const AchievementsSection = () => {
     return (
         <section
             ref={containerRef}
-            className="relative w-full py-20 md:py-32 bg-[#fdfbf7] overflow-hidden"
+            className="relative w-full pt-12 pb-16 md:pt-16 md:pb-24 bg-[#fdfbf7] overflow-hidden"
         >
             {/* Atmospheric Background */}
             <div className="absolute inset-0 z-0">
@@ -299,9 +299,9 @@ export const AchievementsSection = () => {
 
             <div className="relative z-10 container mx-auto px-8 max-w-7xl">
                 {/* Cinematic Header Sequence */}
-                <div className="max-w-5xl mb-24 md:mb-32 text-left">
+                <div className="max-w-5xl mb-12 md:mb-16 text-left">
                     <h2
-                        className="text-6xl md:text-[9rem] font-bold text-[#1a1a1a] tracking-tighter leading-[0.95] mb-8"
+                        className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#1a1a1a] tracking-tight leading-[1.0] mb-4 md:mb-6"
                         style={{ fontFamily: '"Playfair Display", serif' }}
                     >
                         {"Quantifying".split('').map((char, i) => (
@@ -316,7 +316,7 @@ export const AchievementsSection = () => {
                             </motion.span>
                         ))}
                         <br />
-                        <span className="text-[#c5a56d] block italic">Performance</span>
+                        <span className="font-light italic text-[#c5a56d] block">Performance</span>
                     </h2>
                 </div>
 
