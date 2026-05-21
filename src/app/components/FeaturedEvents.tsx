@@ -130,7 +130,7 @@ export const FeaturedEvents = () => {
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            className="relative w-full bg-[#faf9f6] overflow-hidden flex flex-col items-center justify-center py-16 cursor-none"
+            className="relative w-full bg-[#faf9f6] overflow-hidden flex flex-col items-center justify-center pt-10 pb-16 md:pt-14 md:pb-24 cursor-none"
         >
             {/* Filmic Noise & Grain */}
             <div className="absolute inset-0 pointer-events-none z-[60] opacity-[0.03] mix-blend-overlay">
@@ -167,37 +167,25 @@ export const FeaturedEvents = () => {
             </div>
 
             {/* Exhibition Telemetry Header */}
-            <div className="relative z-20 text-center mb-32 px-8">
-                <div className="flex flex-col items-center gap-6">
-
-
+            <div className="relative z-20 text-center mb-16 md:mb-20 px-8">
+                <div className="flex flex-col items-center gap-4">
                     <div className="overflow-hidden">
-                        <h2
-                            className="text-6xl md:text-9xl font-bold text-[#1a1a1a] tracking-tighter leading-none flex flex-wrap justify-center gap-x-6"
+                        <motion.h2
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a1a1a] tracking-tight leading-tight"
                             style={{ fontFamily: '"Playfair Display", serif' }}
                         >
-                            {"Featured Collection".split(' ').map((word, wordIdx) => (
-                                <span key={wordIdx} className="flex overflow-hidden">
-                                    {word.split('').map((char, charIdx) => (
-                                        <motion.span
-                                            key={charIdx}
-                                            initial={{ y: "100%", rotateX: -90 }}
-                                            whileInView={{ y: 0, rotateX: 0 }}
-                                            transition={{ duration: 1, delay: 0.2 + (wordIdx * 5 + charIdx) * 0.03, ease: [0.215, 0.61, 0.355, 1] }}
-                                            className="inline-block"
-                                        >
-                                            {char}
-                                        </motion.span>
-                                    ))}
-                                </span>
-                            ))}
-                        </h2>
+                            Featured <span className="font-light italic text-[#c5a56d]">Universities</span>
+                        </motion.h2>
                     </div>
                     <motion.p
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.8 }}
-                        className="max-w-2xl text-xl md:text-2xl text-[#1a1a1a]/40 font-light italic mt-6"
+                        transition={{ delay: 0.4 }}
+                        className="max-w-2xl text-base md:text-lg text-[#1a1a1a]/40 font-light italic mt-4"
                         style={{ fontFamily: '"Playfair Display", serif' }}
                     >
                         "Architecting elite academic futures through strategic global portfolio storytelling."

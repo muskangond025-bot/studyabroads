@@ -121,7 +121,7 @@ const BentoCard = ({ item, className }: { item: EventType, className: string }) 
 
 export const EventTypeSection = () => {
     return (
-        <section className="w-full bg-[#F8F9FA] pt-8 pb-24 md:pt-12 md:pb-32 relative overflow-hidden" id="destinations">
+        <section className="w-full bg-[#F8F9FA] pt-8 pb-16 md:pt-12 md:pb-20 relative overflow-hidden" id="destinations">
             <div className="container mx-auto px-8 relative z-10">
                 
                 {/* Section Title */}

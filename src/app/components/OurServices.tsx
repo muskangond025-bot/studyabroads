@@ -122,7 +122,7 @@ export function OurServices() {
   const currentMilestone = milestoneData[activeTab];
 
   return (
-    <section className="relative w-full bg-[#fcfaf6] py-32 overflow-hidden flex flex-col items-center" id="services">
+    <section className="relative w-full bg-[#fcfaf6] pt-10 pb-20 md:pt-14 md:pb-28 overflow-hidden flex flex-col items-center" id="services">
       {/* Editorial Grid Backing */}
       <div className="absolute inset-0 opacity-[0.015] pointer-events-none z-0">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -137,18 +137,18 @@ export function OurServices() {
 
       <div className="container mx-auto px-8 relative z-10 max-w-7xl">
         {/* Header Section */}
-        <div className="text-center mb-16 space-y-6">
+        <div className="text-center mb-12 space-y-4">
           <span className="text-[10px] font-bold tracking-[0.4em] text-[#c5a56d] uppercase block">
             Academic Milestones
           </span>
           <h2
-            className="text-5xl md:text-7xl font-bold text-[#1a1a1a] tracking-tighter"
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a1a1a] tracking-tight leading-tight"
             style={{ fontFamily: '"Playfair Display", serif' }}
           >
-            A Legacy of Strategic Placements
+            A Legacy of <span className="font-light italic text-[#c5a56d]">Strategic Placements</span>
           </h2>
           <p
-            className="text-lg md:text-xl text-[#1a1a1a]/40 font-light italic max-w-2xl mx-auto leading-relaxed"
+            className="text-base md:text-lg text-[#1a1a1a]/40 font-light italic max-w-2xl mx-auto leading-relaxed"
             style={{ fontFamily: '"Playfair Display", serif' }}
           >
             "An archival database tracking the milestone timelines of our elite study abroad placements."
