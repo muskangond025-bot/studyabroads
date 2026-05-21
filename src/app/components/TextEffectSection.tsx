@@ -64,7 +64,7 @@ const metrics: Metric[] = [
 
 export const TextEffectSection = () => {
     return (
-        <section className="relative w-full bg-[#fdfaf3] py-16 overflow-hidden">
+        <section className="relative w-full bg-[#fdfaf3] pt-10 pb-16 md:pt-12 md:pb-24 overflow-hidden">
             {/* Background Texture & Spotlight */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.05)_0%,transparent_70%)]" />
@@ -80,21 +80,23 @@ export const TextEffectSection = () => {
 
             <div className="container mx-auto px-8 md:px-24 relative z-10">
                 {/* Header Section */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-24">
-                    <div className="space-y-6 max-w-2xl">
-
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-12 mb-12 md:mb-16">
+                    <div className="max-w-2xl">
                         <h2 
-                            className="text-6xl md:text-8xl font-bold text-[#1a1a1a] tracking-tighter"
+                            className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#1a1a1a] tracking-tight leading-[1.1] md:leading-none"
                             style={{ fontFamily: '"Playfair Display", serif' }}
                         >
-                            Admissions Integrity
+                            Admissions <span className="font-light italic text-[#d4af37]">Integrity</span>
                         </h2>
                     </div>
-                    <div className="flex flex-col items-end gap-4 text-right">
-                        <p className="text-[#1a1a1a]/40 font-light italic max-w-xs" style={{ fontFamily: '"Playfair Display", serif' }}>
+                    <div className="flex flex-col md:items-end justify-center text-left md:text-right max-w-md">
+                        <div className="w-12 h-[1px] bg-[#d4af37] mb-4 md:hidden" />
+                        <p 
+                            className="text-base md:text-lg text-[#1a1a1a]/50 font-light italic leading-relaxed" 
+                            style={{ fontFamily: '"Playfair Display", serif' }}
+                        >
                             "A commitment to elite global standards of portfolio mentoring and university placement success."
                         </p>
-
                     </div>
                 </div>
 
