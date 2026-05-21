@@ -948,7 +948,7 @@ export function ThreeDHero() {
       {/* Premium Curved Bottom Horizon Divider (Blending with EventTypeSection) */}
       <div className="absolute bottom-[-2px] left-0 right-0 h-16 md:h-24 lg:h-32 z-12 pointer-events-none fill-[#F8F9FA]">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,120 L1440,120 L1440,50 Q720,-10 0,50 Z" />
+          <path d="M0,120 L1440,120 L1440,50 Q720,-10 0,50 Z" fill="#F8F9FA" />
         </svg>
       </div>
 

@@ -121,16 +121,16 @@ const BentoCard = ({ item, className }: { item: EventType, className: string }) 
 
 export const EventTypeSection = () => {
     return (
-        <section className="w-full bg-[#F8F9FA] py-24 md:py-32 relative overflow-hidden" id="destinations">
+        <section className="w-full bg-[#F8F9FA] pt-8 pb-24 md:pt-12 md:pb-32 relative overflow-hidden" id="destinations">
             <div className="container mx-auto px-8 relative z-10">
                 
                 {/* Section Title */}
-                <div className="max-w-4xl mx-auto text-center mb-20">
+                <div className="max-w-4xl mx-auto text-center mb-14">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="flex items-center justify-center gap-6 mb-8"
+                        className="flex items-center justify-center gap-6 mb-5"
                     >
                         <div className="w-12 h-[1px] bg-[#D4AF37]" />
                         <span className="text-[10px] font-bold tracking-[1em] text-[#D4AF37] uppercase italic" style={{ fontFamily: '"Outfit", sans-serif' }}>Explore Destinations</span>
@@ -138,10 +138,10 @@ export const EventTypeSection = () => {
                     </motion.div>
 
                     <h2 
-                        className="text-5xl md:text-7xl font-bold text-[#1a1a1a] tracking-tight leading-tight mb-8"
-                        style={{ fontFamily: '"Outfit", sans-serif' }}
+                        className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a1a1a] tracking-tight leading-tight"
+                        style={{ fontFamily: '"Playfair Display", serif' }}
                     >
-                        Global Placement Destinations
+                        Global Placement <span className="font-light italic text-[#D4AF37]">Destinations</span>
                     </h2>
                 </div>
 
