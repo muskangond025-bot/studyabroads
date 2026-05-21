@@ -84,7 +84,7 @@ export function FAQMini({ faqs = defaultFAQs }: FAQMiniProps) {
     );
 
     return (
-        <section className="relative w-full bg-[#faf9f6] py-32 overflow-hidden flex flex-col items-center">
+        <section className="relative w-full bg-[#faf9f6] pt-12 pb-16 md:pt-16 md:pb-24 overflow-hidden flex flex-col items-center">
             {/* Ambient Background Detail */}
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -104,12 +104,12 @@ export function FAQMini({ faqs = defaultFAQs }: FAQMiniProps) {
 
             <div className="container mx-auto px-8 relative z-10 max-w-4xl">
                 {/* Section Header */}
-                <div className="text-center mb-24 space-y-6">
+                <div className="text-center mb-12 md:mb-16 space-y-4">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="flex items-center justify-center gap-4"
+                        className="flex items-center justify-center gap-4 mb-2"
                     >
                         <div className="w-12 h-[1px] bg-[#d4af37]" />
                         <span className="text-[10px] font-bold tracking-[1em] text-[#d4af37] uppercase italic">FAQ Archive</span>
@@ -121,10 +121,10 @@ export function FAQMini({ faqs = defaultFAQs }: FAQMiniProps) {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-6xl md:text-7xl font-bold text-[#1a1a1a] tracking-tighter"
+                        className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a1a1a] tracking-tight leading-tight"
                         style={{ fontFamily: '"Playfair Display", serif' }}
                     >
-                        Frequently Asked Questions
+                        Frequently Asked <span className="font-light italic text-[#d4af37]">Questions</span>
                     </motion.h2>
                     
                     <motion.p 
@@ -132,7 +132,7 @@ export function FAQMini({ faqs = defaultFAQs }: FAQMiniProps) {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-xl text-[#1a1a1a]/40 font-light italic max-w-2xl mx-auto"
+                        className="text-base md:text-lg text-[#1a1a1a]/40 font-light italic max-w-2xl mx-auto leading-relaxed"
                         style={{ fontFamily: '"Playfair Display", serif' }}
                     >
                         "Access the compiled intelligence of our admissions strategy and global enrollment methodologies."
