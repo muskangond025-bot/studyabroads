@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import fs from 'fs'
 
 
 function figmaAssetResolver() {
@@ -24,7 +25,36 @@ export default defineConfig({
     // Tailwind is not being actively used – do not remove them
     react(),
     tailwindcss(),
+    {
+      name: 'dev-html-plugin',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          const url = req.url || '';
+          if (url === '/' || url === '/index.html' || url.startsWith('/studyabroads')) {
+            req.url = '/index.dev.html';
+          }
+          next();
+        });
+      }
+    },
+    {
+      name: 'rename-html',
+      closeBundle() {
+        const devHtmlPath = path.resolve(__dirname, 'dist/index.dev.html')
+        const indexHtmlPath = path.resolve(__dirname, 'dist/index.html')
+        if (fs.existsSync(devHtmlPath)) {
+          fs.renameSync(devHtmlPath, indexHtmlPath)
+        }
+      }
+    }
   ],
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.dev.html'),
+      }
+    }
+  },
   resolve: {
     alias: {
       // Alias @ to the src directory
