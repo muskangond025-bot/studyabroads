@@ -130,7 +130,7 @@ export const FeaturedEvents = () => {
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            className="relative w-full bg-[#faf9f6] overflow-hidden flex flex-col items-center justify-center pt-10 pb-16 md:pt-14 md:pb-24 cursor-none"
+            className="relative w-full bg-[#faf9f6] overflow-hidden flex flex-col items-center justify-center pt-6 pb-12 md:pt-8 md:pb-16 cursor-none"
         >
             {/* Filmic Noise & Grain */}
             <div className="absolute inset-0 pointer-events-none z-[60] opacity-[0.03] mix-blend-overlay">
@@ -167,7 +167,7 @@ export const FeaturedEvents = () => {
             </div>
 
             {/* Exhibition Telemetry Header */}
-            <div className="relative z-20 text-center mb-16 md:mb-20 px-8">
+            <div className="relative z-20 text-center mb-8 md:mb-10 px-8">
                 <div className="flex flex-col items-center gap-4">
                     <div className="overflow-hidden">
                         <motion.h2
@@ -194,7 +194,7 @@ export const FeaturedEvents = () => {
             </div>
 
             {/* 3D Exhibition Track */}
-            <div className="relative w-full h-[65vh] perspective-2500 flex items-center justify-center z-20">
+            <div className="relative w-full h-[420px] md:h-[620px] perspective-2500 flex items-center justify-center z-20">
                 <div className="relative w-full max-w-7xl h-full flex items-center justify-center preserve-3d">
                     {eventCards.map((event, index) => (
                         <div

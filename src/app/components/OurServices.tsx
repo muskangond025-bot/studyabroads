@@ -122,7 +122,7 @@ export function OurServices() {
   const currentMilestone = milestoneData[activeTab];
 
   return (
-    <section className="relative w-full bg-[#fcfaf6] pt-10 pb-20 md:pt-14 md:pb-28 overflow-hidden flex flex-col items-center" id="services">
+    <section className="relative w-full bg-[#fcfaf6] pt-10 pb-10 md:pt-14 md:pb-12 overflow-hidden flex flex-col items-center" id="services">
       {/* Editorial Grid Backing */}
       <div className="absolute inset-0 opacity-[0.015] pointer-events-none z-0">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
