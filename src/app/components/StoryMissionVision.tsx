@@ -174,8 +174,8 @@ export function StoryMissionVision() {
           <div className="absolute top-10 left-8 right-8 md:left-16 md:right-16 flex items-center justify-between pointer-events-none text-white/30 text-[9px] font-bold tracking-[0.3em] uppercase z-10">
             <div className="flex items-center gap-3">
               <span>ARCHIVAL PROFILE</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#c5a56d]/50" />
-              <span className="text-[#c5a56d]/80">{item.id}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]/50" />
+              <span className="text-[#d4af37]/80">{item.id}</span>
             </div>
             <div className="hidden sm:block w-24 h-[1px] bg-white/10" />
             <div>
@@ -184,40 +184,40 @@ export function StoryMissionVision() {
           </div>
 
           {/* Center Card Content Split Layout with Staggered Entrance */}
-          <div className="relative z-10 w-full max-w-5xl flex flex-col md:flex-row items-center gap-12 md:gap-24 px-8">
+          <div className="relative z-10 w-full max-w-5xl flex flex-col items-center justify-center gap-8 md:gap-12 px-8">
             {/* Badge Circular Icon */}
-            <div className="flex flex-col items-center md:items-start gap-8">
+            <div className="flex flex-col items-center gap-8">
               <motion.div
                 initial={{ scale: 0.8, opacity: 0, rotate: -15 }}
                 animate={{ scale: 1, opacity: 1, rotate: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="w-24 h-24 md:w-32 md:h-32 rounded-full border border-white/10 flex items-center justify-center backdrop-blur-md bg-white/5 shadow-2xl"
               >
-                <item.icon className="w-10 h-10 md:w-12 md:h-12 text-[#c5a56d]" />
+                <item.icon className="w-10 h-10 md:w-12 md:h-12 text-[#d4af37]" />
               </motion.div>
             </div>
 
             {/* Text Strategy Info */}
-            <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+            <div className="flex flex-col items-center text-center">
               <motion.h2
-                initial={{ x: 60, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className="text-6xl md:text-[7.5rem] font-bold text-white tracking-tighter leading-none mb-6"
+                className="text-6xl md:text-[7.5rem] font-bold text-white tracking-tighter leading-none mb-6 text-center"
                 style={{ fontFamily: '"Playfair Display", serif' }}
               >
                 {item.title.split(' ').map((word, index) => (
-                  <span key={index} className={index === 1 ? "text-[#c5a56d]" : ""}>
+                  <span key={index} className={index === 1 ? "text-[#d4af37]" : ""}>
                     {word}{" "}
                   </span>
                 ))}
               </motion.h2>
 
               <motion.p
-                initial={{ x: 40, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-                className="text-lg sm:text-xl md:text-2xl text-white/80 font-normal italic max-w-2xl leading-relaxed"
+                className="text-lg sm:text-xl md:text-2xl text-white/80 font-normal italic max-w-2xl leading-relaxed text-center"
                 style={{ fontFamily: '"Cormorant Garamond", serif' }}
               >
                 "{item.description}"
@@ -247,10 +247,10 @@ export function StoryMissionVision() {
                   animate={{ width: "100%" }}
                   key={currentSlide} // Reset and re-trigger animation when currentSlide changes
                   transition={{ duration: slideDuration / 1000, ease: "linear" }}
-                  className="absolute top-0 left-0 h-full bg-[#c5a56d]"
+                  className="absolute top-0 left-0 h-full bg-[#d4af37]"
                 />
               ) : (
-                <div className={`absolute top-0 left-0 h-full bg-[#c5a56d]/30 transition-all duration-300 ${idx < currentSlide ? 'w-full' : 'w-0'}`} />
+                <div className={`absolute top-0 left-0 h-full bg-[#d4af37]/30 transition-all duration-300 ${idx < currentSlide ? 'w-full' : 'w-0'}`} />
               )}
             </div>
           </button>

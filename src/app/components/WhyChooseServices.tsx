@@ -58,7 +58,7 @@ const stats = [
 
 export function WhyChooseServices() {
     return (
-        <section className="relative w-full bg-[#faf9f6] py-32 overflow-hidden flex flex-col items-center">
+        <section className="relative w-full bg-[#faf9f6] pt-16 pb-24 overflow-hidden flex flex-col items-center">
             {/* Ambient Background Detail */}
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -74,18 +74,30 @@ export function WhyChooseServices() {
 
             <div className="container mx-auto px-8 relative z-10">
                 {/* Section Header */}
-                <div className="text-center mb-32 space-y-6">
-
+                <div className="text-center mb-16 space-y-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        className="flex items-center justify-center gap-3 mb-2"
+                    >
+                        <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+                        <span className="text-[10px] font-extrabold tracking-[0.35em] text-[#d4af37] uppercase font-mono">
+                            04 / Elite Standards
+                        </span>
+                        <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+                    </motion.div>
                     
                     <motion.h2 
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-6xl md:text-8xl font-bold text-[#1a1a1a] tracking-tighter"
+                        className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#1a1a1a] tracking-tighter"
                         style={{ fontFamily: '"Playfair Display", serif' }}
                     >
-                        Why Choose Us
+                        Why Choose <span className="font-light italic text-[#d4af37]">Us</span>
                     </motion.h2>
                     
                     <motion.p 
@@ -101,7 +113,7 @@ export function WhyChooseServices() {
                 </div>
 
                 {/* Reasons Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                     {reasons.map((reason, index) => (
                         <ReasonCard key={index} reason={reason} index={index} />
                     ))}
@@ -126,7 +138,7 @@ export function WhyChooseServices() {
                                 >
                                     {stat.value}
                                 </span>
-                                <span className="text-[10px] font-bold tracking-[0.4em] text-[#c5a56d] uppercase">{stat.label}</span>
+                                <span className="text-[10px] font-bold tracking-[0.4em] text-[#d4af37] uppercase">{stat.label}</span>
                             </motion.div>
                         ))}
                     </div>
@@ -149,7 +161,7 @@ const ReasonCard = ({ reason, index }: { reason: Reason, index: number }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -8 }}
-            className="group relative bg-white border border-[#1a1a1a]/5 p-10 rounded-[20px] transition-all duration-700 hover:shadow-[0_40px_80px_-20px_rgba(197,165,109,0.12)] overflow-hidden"
+            className="group relative bg-white border border-[#1a1a1a]/5 p-10 rounded-[20px] transition-all duration-700 hover:shadow-[0_40px_80px_-20px_rgba(212, 175, 55,0.12)] overflow-hidden"
         >
             {/* Archival Status Detail */}
 
@@ -157,13 +169,13 @@ const ReasonCard = ({ reason, index }: { reason: Reason, index: number }) => {
             <div className="flex flex-col items-start gap-8 relative z-10">
                 {/* Icon: Spatial Physics */}
                 <div className="w-14 h-14 bg-[#faf9f6] border border-[#1a1a1a]/5 rounded-xl flex items-center justify-center relative transition-transform duration-700 group-hover:scale-110">
-                    <Icon className="w-6 h-6 text-[#1a1a1a]/60 group-hover:text-[#c5a56d] transition-colors duration-700" />
-                    <div className="absolute inset-0 bg-[#c5a56d]/5 scale-0 group-hover:scale-100 rounded-xl transition-transform duration-700" />
+                    <Icon className="w-6 h-6 text-[#1a1a1a]/60 group-hover:text-[#d4af37] transition-colors duration-700" />
+                    <div className="absolute inset-0 bg-[#d4af37]/5 scale-0 group-hover:scale-100 rounded-xl transition-transform duration-700" />
                 </div>
 
                 <div className="space-y-4 text-left">
                     <h3 
-                        className="text-2xl font-bold text-[#1a1a1a] tracking-tight group-hover:text-[#c5a56d] transition-colors duration-500"
+                        className="text-2xl font-bold text-[#1a1a1a] tracking-tight group-hover:text-[#d4af37] transition-colors duration-500"
                         style={{ fontFamily: '"Playfair Display", serif' }}
                     >
                         {reason.title}
@@ -179,7 +191,7 @@ const ReasonCard = ({ reason, index }: { reason: Reason, index: number }) => {
                 <motion.div 
                     animate={{ y: ["-100%", "400%"] }}
                     transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#c5a56d]/20 to-transparent"
+                    className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/20 to-transparent"
                 />
             </div>
             
@@ -191,7 +203,7 @@ const ReasonCard = ({ reason, index }: { reason: Reason, index: number }) => {
                     opacity: [0, 0.2, 0]
                 }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-10 right-10 w-1 h-1 bg-[#c5a56d] rounded-full blur-[1px] pointer-events-none"
+                className="absolute bottom-10 right-10 w-1 h-1 bg-[#d4af37] rounded-full blur-[1px] pointer-events-none"
             />
         </motion.div>
     );

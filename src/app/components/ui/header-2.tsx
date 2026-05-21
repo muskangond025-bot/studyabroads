@@ -12,6 +12,9 @@ export function Header() {
 	const scrolled = useScroll(10);
 	const { pathname } = useLocation();
 
+	const isAdmissionPortal = pathname === '/get-quote' || pathname.endsWith('/get-quote');
+	const isScrolledOrPortal = scrolled || isAdmissionPortal;
+
 	const links = [
 		{
 			label: 'Home',
@@ -60,7 +63,7 @@ export function Header() {
 				'absolute top-0 left-1/2 -translate-x-1/2 z-50 w-full max-w-5xl border-b border-transparent md:transition-all md:ease-out',
 				{
 					'fixed top-0 md:top-4 md:max-w-4xl border-border bg-background/95 supports-[backdrop-filter]:bg-background/50 backdrop-blur-lg md:rounded-md md:shadow':
-						scrolled && !open,
+						isScrolledOrPortal && !open,
 					'fixed inset-x-0 top-0 bg-background/90': open,
 				},
 			)}
@@ -69,11 +72,11 @@ export function Header() {
 				className={cn(
 					'flex h-14 w-full items-center justify-between px-4 md:h-12 md:transition-all md:ease-out',
 					{
-						'md:px-2': scrolled,
+						'md:px-2': isScrolledOrPortal,
 					},
 				)}
 			>
-				<WordmarkIcon className={scrolled ? "text-[#1a1a1a]" : "text-white"} />
+				<WordmarkIcon className={isScrolledOrPortal ? "text-[#1a1a1a]" : "text-white"} />
 				<div className="hidden items-center gap-2 md:flex">
 					{links.map((link, i) => {
 						const isActive = pathname === link.href;
@@ -82,7 +85,7 @@ export function Header() {
 								key={i} 
 								className={cn(
 									"relative group px-4 py-2 text-sm font-medium transition-colors",
-									scrolled ? "text-[#1a1a1a]/60 hover:text-[#1a1a1a]" : "text-white/70 hover:text-white"
+									isScrolledOrPortal ? "text-[#1a1a1a]/60 hover:text-[#1a1a1a]" : "text-white/70 hover:text-white"
 								)} 
 								to={link.href}
 							>
@@ -92,21 +95,21 @@ export function Header() {
 								<motion.div
 									initial={{ scaleX: 0, opacity: 0 }}
 									whileHover={{ scaleX: 1, opacity: 1 }}
-									className="absolute top-0 left-2 right-2 h-[1px] bg-[#c5a56d]/40"
+									className="absolute top-0 left-2 right-2 h-[1px] bg-[#d4af37]/40"
 									transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
 								/>
 								
 								{isActive ? (
 									<motion.div
 										layoutId="nav-underline"
-										className="absolute bottom-0 left-2 right-2 h-[2px] bg-[#c5a56d]"
+										className="absolute bottom-0 left-2 right-2 h-[2px] bg-[#d4af37]"
 										transition={{ type: "spring", stiffness: 380, damping: 30 }}
 									/>
 								) : (
 									<motion.div
 										initial={{ scaleX: 0, opacity: 0 }}
 										whileHover={{ scaleX: 1, opacity: 1 }}
-										className="absolute bottom-0 left-2 right-2 h-[1px] bg-[#c5a56d]/40"
+										className="absolute bottom-0 left-2 right-2 h-[1px] bg-[#d4af37]/40"
 										transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
 									/>
 								)}
@@ -121,7 +124,7 @@ export function Header() {
 					size="icon" 
 					variant="outline" 
 					onClick={() => setOpen(!open)} 
-					className={cn("md:hidden bg-transparent border-transparent", scrolled ? "text-[#1a1a1a]" : "text-white")}
+					className={cn("md:hidden bg-transparent border-transparent", isScrolledOrPortal ? "text-[#1a1a1a]" : "text-white")}
 				>
 					<MenuToggleIcon open={open} className="size-5" duration={300} />
 				</Button>
@@ -171,6 +174,6 @@ export const WordmarkIcon = ({ className, ...props }: React.ComponentProps<"span
     style={{ fontFamily: '"Playfair Display", serif' }} 
     {...props}
   >
-    GLOBAL<span className="text-[#c5a56d] italic ml-1">PATH</span>
+    GLOBAL<span className="text-[#d4af37] italic ml-1">PATH</span>
   </span>
 );

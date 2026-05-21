@@ -81,7 +81,7 @@ const testimonials: Testimonial[] = [
 
 export const ClientTestimonials = () => {
     return (
-        <section className="relative w-full bg-[#F8F9FA] pt-12 pb-16 md:pt-16 md:pb-24 overflow-hidden flex flex-col items-center">
+        <section className="relative w-full bg-[#F8F9FA] pt-4 pb-16 md:pt-6 md:pb-24 overflow-hidden flex flex-col items-center">
             
             <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">

@@ -70,7 +70,7 @@ export const LuxuryGallerySection = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative w-full pt-10 pb-0 bg-[#fdfaf3] md:pt-12 overflow-hidden">
+        <section ref={containerRef} className="relative w-full pt-4 pb-0 bg-[#fdfaf3] md:pt-6 overflow-hidden">
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                 <svg width="100%" height="100%">
                     <defs>
@@ -83,14 +83,19 @@ export const LuxuryGallerySection = () => {
             </div>
 
             <div className="container mx-auto px-8 relative z-10">
-                <div className="mb-10 md:mb-14 flex flex-col items-center lg:items-start text-center lg:text-left">
-                    <div className="gallery-title-line text-[#d4af37] tracking-[0.8em] text-[10px] uppercase font-bold mb-3 md:mb-4">Admissions Registry</div>
+                <div className="mb-4 md:mb-6 text-center flex flex-col items-center justify-center mx-auto max-w-3xl">
+                    <div className="gallery-title-line flex items-center justify-center gap-3 mb-1">
+                        <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+                        <span className="text-[10px] font-extrabold tracking-[0.35em] text-[#d4af37] uppercase font-mono">
+                            02 / Admissions Registry
+                        </span>
+                        <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+                    </div>
                     <h2 
-                        className="gallery-title-line text-5xl md:text-7xl lg:text-8xl font-bold text-[#1a1a1a] tracking-tight leading-[1.05]"
+                        className="gallery-title-line text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a1a1a] tracking-tight leading-tight text-center"
                         style={{ fontFamily: '"Playfair Display", serif' }}
                     >
-                        The Admissions <br />
-                        <span className="font-light italic text-[#d4af37] lg:ml-16">Exhibition.</span>
+                        The Admissions <span className="font-light italic text-[#d4af37]">Exhibition</span>
                     </h2>
                 </div>
 

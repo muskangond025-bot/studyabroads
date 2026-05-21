@@ -703,11 +703,15 @@ export function ThreeDHero() {
         />
       </div>
 
-      {/* Inject Keyframe Style block into the head for slow-sunbeam-rotate */}
+      {/* Inject Keyframe Style block into the head for slow-sunbeam-rotate and text-shimmer */}
       <style>{`
         @keyframes slow-sunbeam-rotate {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
+        }
+        @keyframes text-shimmer {
+          from { background-position: 0% center; }
+          to { background-position: 200% center; }
         }
       `}</style>
 
@@ -720,7 +724,7 @@ export function ThreeDHero() {
           className="text-4xl md:text-6xl lg:text-[80px] font-black text-white tracking-tighter leading-[1.0] uppercase max-w-5xl select-none"
           style={{ fontFamily: '"Outfit", sans-serif' }}
         >
-          {/* Row 1: ARCHITECTING (Outline) ELITE (Gold) */}
+          {/* Row 1: ARCHITECTING (Outline) ELITE (Gold Gradient) */}
           <div className="flex flex-wrap justify-center items-center gap-x-4">
             <span className="inline-block overflow-hidden pb-1.5 -mb-1.5">
               <motion.span
@@ -728,7 +732,10 @@ export function ThreeDHero() {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="inline-block text-transparent"
-                style={{ WebkitTextStroke: "2.2px rgba(255,255,255,0.95)", textShadow: "0 4px 18px rgba(0,0,0,0.3)" }}
+                style={{ 
+                  WebkitTextStroke: "2.2px rgba(255, 228, 179, 0.98)", 
+                  textShadow: "0 0 25px rgba(15, 23, 42, 0.98), 0 0 45px rgba(15, 23, 42, 0.85), 0 4px 20px rgba(15, 23, 42, 0.95)" 
+                }}
               >
                 ARCHITECTING
               </motion.span>
@@ -738,7 +745,12 @@ export function ThreeDHero() {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                className="inline-block text-[#ffcb52] font-black drop-shadow-[0_4px_12px_rgba(255,203,82,0.3)]"
+                className="inline-block bg-gradient-to-r from-[#ffe4b3] via-[#d4af37] to-[#ffe4b3] bg-clip-text text-transparent font-black"
+                style={{ 
+                  backgroundSize: "200% auto",
+                  animation: "text-shimmer 4s linear infinite",
+                  filter: "drop-shadow(0 0 20px rgba(15, 23, 42, 0.95)) drop-shadow(0 4px 15px rgba(212, 175, 55, 0.6))" 
+                }}
               >
                 ELITE
               </motion.span>
@@ -753,6 +765,7 @@ export function ThreeDHero() {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
                 className="inline-block text-white font-black"
+                style={{ textShadow: "0 0 25px rgba(15, 23, 42, 0.98), 0 0 45px rgba(15, 23, 42, 0.85), 0 4px 20px rgba(15, 23, 42, 0.95)" }}
               >
                 ACADEMIC
               </motion.span>
@@ -763,7 +776,10 @@ export function ThreeDHero() {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
                 className="inline-block text-transparent"
-                style={{ WebkitTextStroke: "2.2px rgba(255,255,255,0.95)", textShadow: "0 4px 18px rgba(0,0,0,0.3)" }}
+                style={{ 
+                  WebkitTextStroke: "2.2px rgba(255, 228, 179, 0.98)", 
+                  textShadow: "0 0 25px rgba(15, 23, 42, 0.98), 0 0 45px rgba(15, 23, 42, 0.85), 0 4px 20px rgba(15, 23, 42, 0.95)" 
+                }}
               >
                 FUTURES
               </motion.span>
@@ -794,7 +810,7 @@ export function ThreeDHero() {
           initial={{ width: 0 }}
           animate={{ width: "96px" }}
           transition={{ duration: 0.8, delay: 1.4, ease: "easeOut" }}
-          className="h-[2px] bg-[#ffcb52] mt-6"
+          className="h-[2px] bg-[#d4af37] mt-6"
         />
 
         {/* Subtitle */}
@@ -802,7 +818,8 @@ export function ThreeDHero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 0.95, y: 0 }}
           transition={{ duration: 1.0, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="text-white text-sm md:text-base lg:text-lg font-semibold leading-relaxed max-w-2xl font-sans mt-6 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
+          className="text-white text-sm md:text-base lg:text-lg font-semibold leading-relaxed max-w-2xl font-sans mt-6 drop-shadow-[0_4px_12px_rgba(15,23,42,0.95)]"
+          style={{ textShadow: "0 2px 10px rgba(15, 23, 42, 0.95), 0 4px 20px rgba(15, 23, 42, 0.85)" }}
         >
           "Guiding exceptional minds toward world-class universities through precision portfolio strategy and bespoke global admissions storytelling."
         </motion.p>

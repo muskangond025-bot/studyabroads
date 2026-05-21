@@ -11,34 +11,43 @@ interface EventType {
     number: string;
 }
 
+const getFullImageUrl = (url: string) => {
+    const base = import.meta.env.BASE_URL || '/';
+    if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) {
+        return url;
+    }
+    const cleanUrl = url.startsWith('/') ? url.slice(1) : url;
+    return `${base}${cleanUrl}?v=2`;
+};
+
 const eventTypes: EventType[] = [
     {
         id: 'united-kingdom',
         name: 'United Kingdom',
         tagline: 'Pioneering Academic Heritage & Historic Collegiate Excellence',
         number: '01',
-        image: 'image.jpg'
+        image: '/dest_uk.png'
     },
     {
         id: 'united-states',
         name: 'United States',
         tagline: 'Ivy League Prestige, Research Dominance & Global Leadership',
         number: '02',
-        image: 'https://images.unsplash.com/photo-1622397333309-3056849bc70b?q=80&w=1080&auto=format&fit=crop'
+        image: '/dest_us.png'
     },
     {
         id: 'canada',
         name: 'Canada',
         tagline: 'World-Class Innovation, Diverse Metropolises & Career Readiness',
         number: '03',
-        image: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=1080&auto=format&fit=crop'
+        image: '/dest_ca.png'
     },
     {
         id: 'australia',
         name: 'Australia',
         tagline: 'Top-Tier Global Institutions & Progressive Coastal Living',
         number: '04',
-        image: 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=1080&auto=format&fit=crop'
+        image: '/dest_au.png'
     }
 ];
 
@@ -53,7 +62,7 @@ const BentoCard = ({ item, className }: { item: EventType, className: string }) 
             transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className={`relative rounded-3xl overflow-hidden cursor-pointer shadow-[0_20px_40px_-20px_rgba(26,26,26,0.04)] hover:shadow-[0_45px_80px_-20px_rgba(26,26,26,0.15)] transition-all duration-500 border border-[#1a1a1a]/10 group flex flex-col justify-end min-h-[300px] ${className}`}
+            className={`relative rounded-3xl overflow-hidden cursor-pointer shadow-[0_20px_40px_-20px_rgba(26,26,26,0.04)] hover:shadow-[0_40px_80px_-15px_rgba(212,175,55,0.15),_0_15px_30px_-5px_rgba(0,0,0,0.1)] transition-all duration-500 border border-[#1a1a1a]/10 group flex flex-col justify-end min-h-[340px] md:min-h-0 md:h-full w-full ${className}`}
         >
             {/* Background Image with Zoom Effect */}
             <motion.div 
@@ -62,19 +71,22 @@ const BentoCard = ({ item, className }: { item: EventType, className: string }) 
                 transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
             >
                 <ImageWithFallback
-                    src={item.image}
+                    src={getFullImageUrl(item.image)}
                     alt={item.name}
                     className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000"
                 />
             </motion.div>
 
             {/* Cinematic Gradient Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/90 via-[#0d0d0d]/40 to-transparent z-10 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/95 via-[#0d0d0d]/40 to-transparent z-10 transition-opacity duration-500" />
             <div className={`absolute inset-0 bg-[#D4AF37]/10 mix-blend-color z-10 opacity-0 transition-opacity duration-500 ${isHovered ? 'opacity-100' : ''}`} />
 
+            {/* Elegant Luxury Gold Border Outline on Hover */}
+            <div className={`absolute inset-0 border border-[#D4AF37]/30 rounded-3xl z-30 pointer-events-none transition-all duration-500 ${isHovered ? 'scale-100 opacity-100' : 'scale-[0.98] opacity-0'}`} />
+
             {/* Interactive Telemetry Accent */}
-            <div className="absolute top-6 right-6 z-20 flex items-center gap-1.5 px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
-                <span className="text-[9px] font-bold text-white tracking-widest" style={{ fontFamily: '"Outfit", sans-serif' }}>
+            <div className={`absolute top-6 right-6 z-20 flex items-center gap-1.5 px-3 py-1 bg-white/10 backdrop-blur-md border rounded-full transition-all duration-500 ${isHovered ? 'border-[#D4AF37]/50 shadow-[0_0_10px_rgba(212,175,55,0.3)]' : 'border-white/20'}`}>
+                <span className={`text-[9px] font-bold tracking-widest transition-colors duration-500 ${isHovered ? 'text-[#D4AF37]' : 'text-white'}`} style={{ fontFamily: '"Outfit", sans-serif' }}>
                     {item.number}
                 </span>
             </div>
@@ -145,30 +157,30 @@ export const EventTypeSection = () => {
                     </h2>
                 </div>
 
-                {/* Majestic Asymmetric Bento Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* United Kingdom - Tall / Majestic tile on the left */}
+                {/* Perfect Symmetrical 2x2 Grid - Balanced & Eye-Catching */}
+                <div className="grid grid-cols-1 md:grid-cols-2 md:auto-rows-[380px] gap-8">
+                    {/* United Kingdom */}
                     <BentoCard 
                         item={eventTypes[0]} 
-                        className="md:col-span-2 md:row-span-2 md:min-h-[550px]" 
+                        className="" 
                     />
 
-                    {/* United States - Rectangular tile on the right */}
+                    {/* United States */}
                     <BentoCard 
                         item={eventTypes[1]} 
-                        className="md:col-span-1" 
+                        className="" 
                     />
 
-                    {/* Canada - Rectangular tile on the right */}
+                    {/* Canada */}
                     <BentoCard 
                         item={eventTypes[2]} 
-                        className="md:col-span-1" 
+                        className="" 
                     />
 
-                    {/* Australia - Grand panoramic row tile at the bottom */}
+                    {/* Australia */}
                     <BentoCard 
                         item={eventTypes[3]} 
-                        className="md:col-span-3 md:min-h-[380px]" 
+                        className="" 
                     />
                 </div>
             </div>

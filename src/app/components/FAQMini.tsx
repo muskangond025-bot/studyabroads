@@ -84,7 +84,7 @@ export function FAQMini({ faqs = defaultFAQs }: FAQMiniProps) {
     );
 
     return (
-        <section className="relative w-full bg-[#faf9f6] pt-12 pb-16 md:pt-16 md:pb-24 overflow-hidden flex flex-col items-center">
+        <section className="relative w-full bg-[#faf9f6] pt-4 pb-8 md:pt-6 md:pb-12 overflow-hidden flex flex-col items-center">
             {/* Ambient Background Detail */}
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -104,12 +104,12 @@ export function FAQMini({ faqs = defaultFAQs }: FAQMiniProps) {
 
             <div className="container mx-auto px-8 relative z-10 max-w-4xl">
                 {/* Section Header */}
-                <div className="text-center mb-12 md:mb-16 space-y-4">
+                <div className="text-center mb-6 md:mb-8 space-y-2.5">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="flex items-center justify-center gap-4 mb-2"
+                        className="flex items-center justify-center gap-4 mb-1"
                     >
                         <div className="w-12 h-[1px] bg-[#d4af37]" />
                         <span className="text-[10px] font-bold tracking-[1em] text-[#d4af37] uppercase italic">FAQ Archive</span>
@@ -159,7 +159,7 @@ export function FAQMini({ faqs = defaultFAQs }: FAQMiniProps) {
                     viewport={{ once: true, margin: "-100px" }}
                     whileHover={{ scale: 1.015, y: -4 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="relative mt-24 w-full h-[400px] md:h-[360px] lg:h-[330px] rounded-[32px] overflow-visible"
+                    className="relative mt-12 md:mt-16 w-full h-[400px] md:h-[360px] lg:h-[330px] rounded-[32px] overflow-visible"
                     style={{ perspective: "2000px", transformStyle: "preserve-3d" }}
                 >
                     {/* Active Interactive Link Overlay */}
@@ -349,6 +349,11 @@ const FAQItemComponent = ({ faq, isOpen, onClick, index }: { faq: FAQItem, isOpe
                 </div>
 
                 <div 
+                    onMouseEnter={() => {
+                        if (!isOpen) {
+                            onClick();
+                        }
+                    }}
                     className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-700 ${isOpen ? 'bg-[#1a1a1a] text-white rotate-180' : 'bg-[#faf9f6] text-[#1a1a1a]/30 group-hover:text-[#1a1a1a]'}`}
                 >
                     {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}

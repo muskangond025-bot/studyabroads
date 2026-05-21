@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence, useSpring, useMotionValue, useTransform } from 'motion/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useSpring, useMotionValue, useTransform, useScroll } from 'motion/react';
 import { Send, User, Mail, Phone, MessageSquare, Calendar, Users, CheckCircle, ShieldCheck, Zap, Globe, Compass, Radio } from 'lucide-react';
 
 const WritingText = ({ text, className, delay = 0, speed = 0.03 }: { text: string; className?: string; delay?: number; speed?: number }) => {
@@ -26,6 +26,36 @@ const WritingText = ({ text, className, delay = 0, speed = 0.03 }: { text: strin
 export const EnquiryForm = () => {
     const [submitted, setSubmitted] = useState(false);
     const formContainerRef = useRef<HTMLDivElement>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const [isDesktop, setIsDesktop] = useState(true);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsDesktop(window.innerWidth >= 1024);
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"]
+    });
+
+    const smoothProgress = useSpring(scrollYProgress, { stiffness: 60, damping: 20, restDelta: 0.001 });
+    
+    const x3DVal = useTransform(smoothProgress, [0, 1], [1, -1]);
+    const x3D = useTransform(x3DVal, val => val * (isDesktop ? 150 : 30));
+
+    const rotateY3DVal = useTransform(smoothProgress, [0, 1], [-1, 1]);
+    const rotateY3D = useTransform(rotateY3DVal, val => val * (isDesktop ? 15 : 5));
+
+    const z3DVal = useTransform(smoothProgress, [0, 0.5, 1], [-1, 0, -1]);
+    const z3D = useTransform(z3DVal, val => val * (isDesktop ? -120 : -30));
+
+    const opacity3D = useTransform(smoothProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -68,7 +98,7 @@ export const EnquiryForm = () => {
     };
 
     return (
-        <section className="relative w-full py-16 md:py-24 bg-[#faf9f6] overflow-hidden">
+        <section ref={sectionRef} className="relative w-full py-16 md:py-24 bg-[#faf9f6] overflow-hidden">
             {/* Ambient Detail: Kinetic Grid */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                 <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -155,20 +185,29 @@ export const EnquiryForm = () => {
 
                     {/* Right: Spatial Inquiry Terminal */}
                     <motion.div
-                        initial={{ opacity: 0, y: 150, scale: 0.8, rotateX: 15, rotateY: -15 }}
-                        whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0, rotateY: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{ 
-                            duration: 1.5, 
-                            ease: [0.22, 1, 0.36, 1],
+                        style={{
+                            x: x3D,
+                            rotateY: rotateY3D,
+                            z: z3D,
+                            opacity: opacity3D,
+                            perspective: 1500,
+                            transformStyle: 'preserve-3d'
                         }}
-                        style={{ perspective: 1500 }}
                     >
                         <motion.div
                             ref={formContainerRef}
                             onMouseMove={handleMouseMove}
                             onMouseLeave={() => { x.set(0); y.set(0); }}
-                            style={{ rotateX, rotateY }}
+                            initial={{ opacity: 0, x: 100, scale: 0.95 }}
+                            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                            style={{
+                                rotateX,
+                                rotateY,
+                                transformStyle: 'preserve-3d',
+                                perspective: 2000
+                            }}
                             className="relative bg-white border border-[#1a1a1a]/5 rounded-[48px] p-10 md:p-16 shadow-[0_60px_120px_-30px_rgba(0,0,0,0.08)] overflow-hidden h-full"
                         >
                         <AnimatePresence mode="wait">

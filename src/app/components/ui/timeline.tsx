@@ -59,13 +59,13 @@ const TimelineCard = ({ content }: { content: React.ReactNode }) => {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 w-full bg-white/40 backdrop-blur-md border border-[#c5a56d]/15 p-8 md:p-12 rounded-[36px] shadow-[0_30px_60px_-15px_rgba(26,26,26,0.03)] hover:shadow-[0_50px_90px_-20px_rgba(197,165,109,0.12)] transition-all duration-700 overflow-hidden group"
+            className="relative z-10 w-full bg-white/40 backdrop-blur-md border border-[#d4af37]/15 p-8 md:p-12 rounded-[36px] shadow-[0_30px_60px_-15px_rgba(26,26,26,0.03)] hover:shadow-[0_50px_90px_-20px_rgba(212, 175, 55,0.12)] transition-all duration-700 overflow-hidden group"
         >
             {/* Custom Mouse Spotlight Highlight */}
             <div 
                 className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                 style={{
-                    background: `radial-gradient(circle 350px at ${mousePos.x}px ${mousePos.y}px, rgba(197, 165, 109, 0.05), transparent 80%)`
+                    background: `radial-gradient(circle 350px at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.05), transparent 80%)`
                 }}
             />
 
@@ -74,7 +74,7 @@ const TimelineCard = ({ content }: { content: React.ReactNode }) => {
                 className="absolute inset-0 rounded-[36px] pointer-events-none z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{
                     padding: '1.5px',
-                    background: `radial-gradient(circle 250px at ${mousePos.x}px ${mousePos.y}px, #c5a56d, transparent 75%)`,
+                    background: `radial-gradient(circle 250px at ${mousePos.x}px ${mousePos.y}px, #d4af37, transparent 75%)`,
                     mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
                     maskComposite: 'exclude',
                     WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
@@ -135,7 +135,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             {/* Global Progress Terminal (Fixed) */}
             <div className="fixed top-0 left-0 w-full h-[3px] z-[100] bg-[#1a1a1a]/5">
                 <motion.div 
-                    className="h-full bg-[#c5a56d] shadow-[0_0_15px_rgba(197,165,109,0.6)]"
+                    className="h-full bg-[#d4af37] shadow-[0_0_15px_rgba(212, 175, 55,0.6)]"
                     style={{ scaleX, transformOrigin: 'left' }}
                 />
             </div>
@@ -146,7 +146,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                         <motion.div 
                             initial={{ width: 0 }}
                             whileInView={{ width: 60 }}
-                            className="h-[1px] bg-[#c5a56d]"
+                            className="h-[1px] bg-[#d4af37]"
                         />
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
                         <div className="space-y-6">
@@ -181,8 +181,8 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                             <div className="max-w-7xl mx-auto px-8 md:px-12 flex items-center justify-between">
                                 <div className="flex items-center gap-12">
                                     <div className="flex flex-col items-center">
-                                        <span className="text-xl font-bold text-[#c5a56d] tracking-widest">{index < 9 ? `0${index + 1}` : index + 1}</span>
-                                        <div className="w-[1px] h-4 bg-[#c5a56d]/30 mt-1" />
+                                        <span className="text-xl font-bold text-[#d4af37] tracking-widest">{index < 9 ? `0${index + 1}` : index + 1}</span>
+                                        <div className="w-[1px] h-4 bg-[#d4af37]/30 mt-1" />
                                     </div>
                                     
                                     <div className="flex overflow-hidden">

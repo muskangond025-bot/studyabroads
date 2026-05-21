@@ -158,7 +158,7 @@ const StackCard = ({
         perspective: 1200,
       }}
       className={cn(
-        "absolute w-full h-full bg-white border border-[#1a1a1a]/5 hover:border-[#c5a56d]/30 rounded-[32px] overflow-hidden p-5 flex flex-col group select-none shadow-xl shadow-[#1a1a1a]/5",
+        "absolute w-full h-full bg-white border border-[#1a1a1a]/5 hover:border-[#d4af37]/30 rounded-[32px] overflow-hidden p-5 flex flex-col group select-none shadow-xl shadow-[#1a1a1a]/5",
         isTop ? "cursor-pointer pointer-events-auto" : "pointer-events-none"
       )}
     >
@@ -180,13 +180,13 @@ const StackCard = ({
       </div>
 
       {/* Meta Identifier */}
-      <span className="text-[9px] font-bold tracking-[0.25em] text-[#c5a56d] uppercase mb-2">
+      <span className="text-[9px] font-bold tracking-[0.25em] text-[#d4af37] uppercase mb-2">
         {member.refId}
       </span>
 
       {/* Name */}
       <h3
-        className="text-2xl md:text-3xl font-bold text-[#1a1a1a] tracking-tight group-hover:text-[#c5a56d] transition-colors duration-300 mb-2 leading-none"
+        className="text-2xl md:text-3xl font-bold text-[#1a1a1a] tracking-tight group-hover:text-[#d4af37] transition-colors duration-300 mb-2 leading-none"
         style={{ fontFamily: '"Playfair Display", serif' }}
       >
         {member.name}
@@ -199,7 +199,7 @@ const StackCard = ({
 
       {/* Shimmer Border Overlay */}
       {isTop && (
-        <div className="absolute inset-0 rounded-[32px] border border-[#c5a56d]/0 group-hover:border-[#c5a56d]/30 pointer-events-none transition-colors duration-500" />
+        <div className="absolute inset-0 rounded-[32px] border border-[#d4af37]/0 group-hover:border-[#d4af37]/30 pointer-events-none transition-colors duration-500" />
       )}
     </motion.div>
   );
@@ -244,7 +244,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: { members?: 
   const activeMember = members[activeIndex];
 
   return (
-    <div className="flex flex-col lg:flex-row items-center lg:items-start gap-16 lg:gap-24 w-full pt-4">
+    <div className="flex flex-col lg:flex-row items-center lg:items-start gap-16 lg:gap-24 w-full pt-0">
       {/* ── Left Column: 3D Stack Deck ── */}
       <div className="w-full lg:w-1/2 flex justify-center py-6 relative select-none">
         <div className="relative w-[310px] h-[450px] sm:w-[330px] sm:h-[480px]">
@@ -280,10 +280,10 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: { members?: 
             >
               {/* Telemetry pill */}
               <div className="flex items-center gap-3">
-                <span className="text-[9px] font-extrabold tracking-[0.25em] text-[#c5a56d] uppercase">
+                <span className="text-[9px] font-extrabold tracking-[0.25em] text-[#d4af37] uppercase">
                   {activeMember.refId} • STRATEGIST DOSSIER
                 </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c5a56d]/40 animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]/40 animate-pulse" />
               </div>
 
               {/* Title Name */}
@@ -321,7 +321,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: { members?: 
                   <span className="text-[9px] font-bold text-[#1a1a1a]/40 tracking-widest uppercase block mb-1">
                     Ivy League Success
                   </span>
-                  <span className="text-xl font-bold text-[#c5a56d]">
+                  <span className="text-xl font-bold text-[#d4af37]">
                     100% Guaranteed
                   </span>
                 </div>
@@ -329,14 +329,14 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: { members?: 
 
               {/* Dossier Social Footprint */}
               <div className="flex items-center gap-3 mt-4">
-                <span className="text-[9px] font-extrabold text-[#1a1a1a]/70 hover:text-[#c5a56d] transition-colors duration-300 tracking-widest uppercase cursor-default">
+                <span className="text-[9px] font-extrabold text-[#1a1a1a]/70 hover:text-[#d4af37] transition-colors duration-300 tracking-widest uppercase cursor-default">
                   Social Fingerprint:
                 </span>
                 <div className="flex items-center gap-2">
                   {activeMember.social?.linkedin && (
                     <a
                       href={activeMember.social.linkedin}
-                      className="text-[#1a1a1a]/70 hover:text-[#c5a56d] transition-colors duration-300"
+                      className="text-[#1a1a1a]/70 hover:text-[#d4af37] transition-colors duration-300"
                     >
                       <FaLinkedinIn size={12} />
                     </a>
@@ -344,7 +344,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: { members?: 
                   {activeMember.social?.twitter && (
                     <a
                       href={activeMember.social.twitter}
-                      className="text-[#1a1a1a]/70 hover:text-[#c5a56d] transition-colors duration-300"
+                      className="text-[#1a1a1a]/70 hover:text-[#d4af37] transition-colors duration-300"
                     >
                       <FaTwitter size={12} />
                     </a>
@@ -352,7 +352,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: { members?: 
                   {activeMember.social?.instagram && (
                     <a
                       href={activeMember.social.instagram}
-                      className="text-[#1a1a1a]/70 hover:text-[#c5a56d] transition-colors duration-300"
+                      className="text-[#1a1a1a]/70 hover:text-[#d4af37] transition-colors duration-300"
                     >
                       <FaInstagram size={12} />
                     </a>
@@ -367,7 +367,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: { members?: 
         <div className="flex items-center gap-4 mt-10">
           <button
             onClick={handlePrev}
-            className="w-10 h-10 rounded-full border border-[#1a1a1a]/10 hover:border-[#c5a56d] hover:bg-[#c5a56d]/5 flex items-center justify-center text-[#1a1a1a]/60 hover:text-[#c5a56d] transition-all duration-300"
+            className="w-10 h-10 rounded-full border border-[#1a1a1a]/10 hover:border-[#d4af37] hover:bg-[#d4af37]/5 flex items-center justify-center text-[#1a1a1a]/60 hover:text-[#d4af37] transition-all duration-300"
           >
             <ChevronLeft size={16} />
           </button>
@@ -378,7 +378,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: { members?: 
           
           <button
             onClick={handleNext}
-            className="w-10 h-10 rounded-full border border-[#1a1a1a]/10 hover:border-[#c5a56d] hover:bg-[#c5a56d]/5 flex items-center justify-center text-[#1a1a1a]/60 hover:text-[#c5a56d] transition-all duration-300"
+            className="w-10 h-10 rounded-full border border-[#1a1a1a]/10 hover:border-[#d4af37] hover:bg-[#d4af37]/5 flex items-center justify-center text-[#1a1a1a]/60 hover:text-[#d4af37] transition-all duration-300"
           >
             <ChevronRight size={16} />
           </button>

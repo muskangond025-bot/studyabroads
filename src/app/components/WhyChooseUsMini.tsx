@@ -58,14 +58,14 @@ const ReliabilityCard = ({ item, index }: { item: ReasonItem, index: number }) =
       whileHover={{
         y: -12,
         scale: 1.03,
-        borderColor: "rgba(197, 165, 109, 0.3)",
+        borderColor: "rgba(212, 175, 55, 0.3)",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="group relative bg-white/50 backdrop-blur-md border border-[#1a1a1a]/10 p-10 rounded-[32px] cursor-pointer shadow-[0_20px_40px_-20px_rgba(26,26,26,0.03)] hover:shadow-[0_40px_80px_-20px_rgba(26,26,26,0.12)] transition-all duration-500 min-h-[380px] flex flex-col justify-between overflow-hidden"
     >
       {/* Decorative Gradient Background Wash */}
-      <div className={`absolute inset-0 bg-gradient-to-br from-[#c5a56d]/5 to-transparent opacity-0 transition-opacity duration-500 ${isHovered ? 'opacity-100' : ''}`} />
+      <div className={`absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 transition-opacity duration-500 ${isHovered ? 'opacity-100' : ''}`} />
 
       {/* Top Section */}
       <div className="relative z-10 flex justify-between items-start">
@@ -73,15 +73,15 @@ const ReliabilityCard = ({ item, index }: { item: ReasonItem, index: number }) =
           <Icon className="w-6 h-6" />
         </div>
         <div className="flex flex-col items-end gap-1">
-          <span className="text-[8px] font-bold tracking-[0.5em] text-[#c5a56d] uppercase" style={{ fontFamily: '"Outfit", sans-serif' }}>{item.refCode}</span>
-          <div className={`h-[2px] bg-[#c5a56d] transition-all duration-500 ${isHovered ? 'w-8' : 'w-3'}`} />
+          <span className="text-[8px] font-bold tracking-[0.5em] text-[#d4af37] uppercase" style={{ fontFamily: '"Outfit", sans-serif' }}>{item.refCode}</span>
+          <div className={`h-[2px] bg-[#d4af37] transition-all duration-500 ${isHovered ? 'w-8' : 'w-3'}`} />
         </div>
       </div>
 
       {/* Body Content */}
       <div className="relative z-10 space-y-4 pt-8">
         <h3 
-          className="text-2xl font-bold text-[#1a1a1a] tracking-tight group-hover:text-[#c5a56d] transition-colors duration-500"
+          className="text-2xl font-bold text-[#1a1a1a] tracking-tight group-hover:text-[#d4af37] transition-colors duration-500"
           style={{ fontFamily: '"Outfit", sans-serif' }}
         >
           {item.title}
@@ -94,10 +94,10 @@ const ReliabilityCard = ({ item, index }: { item: ReasonItem, index: number }) =
       {/* Footer Details */}
       <div className="relative z-10 pt-6 border-t border-[#1a1a1a]/5 flex items-center justify-between mt-6">
         <div className="flex items-center gap-2">
-          <ShieldCheck className={`w-3.5 h-3.5 transition-colors duration-500 ${isHovered ? 'text-[#c5a56d]' : 'text-[#1a1a1a]/30'}`} />
+          <ShieldCheck className={`w-3.5 h-3.5 transition-colors duration-500 ${isHovered ? 'text-[#d4af37]' : 'text-[#1a1a1a]/30'}`} />
           <span className="text-[7px] font-bold tracking-[0.3em] text-[#666666] uppercase italic" style={{ fontFamily: '"Outfit", sans-serif' }}>Reliability Sync</span>
         </div>
-        <ArrowRight className={`w-4 h-4 transition-all duration-500 ${isHovered ? 'text-[#c5a56d] translate-x-1' : 'text-[#1a1a1a]/20'}`} />
+        <ArrowRight className={`w-4 h-4 transition-all duration-500 ${isHovered ? 'text-[#d4af37] translate-x-1' : 'text-[#1a1a1a]/20'}`} />
       </div>
 
       {/* Telemetry Hover Detail */}
@@ -109,7 +109,7 @@ const ReliabilityCard = ({ item, index }: { item: ReasonItem, index: number }) =
             exit={{ opacity: 0, scale: 0.8 }}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
           >
-            <Zap className="w-48 h-48 text-[#c5a56d]" />
+            <Zap className="w-48 h-48 text-[#d4af37]" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -119,7 +119,7 @@ const ReliabilityCard = ({ item, index }: { item: ReasonItem, index: number }) =
 
 export const WhyChooseUsMini = () => {
   return (
-    <section className="relative w-full py-24 md:py-32 bg-[#F8F9FA] overflow-hidden">
+    <section className="relative w-full pt-0 pb-24 md:pt-0 md:pb-24 bg-[#F8F9FA] overflow-hidden">
       {/* Ambient Grid Background */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -134,20 +134,20 @@ export const WhyChooseUsMini = () => {
 
       <div className="container mx-auto px-8 relative z-10">
         {/* Section Header */}
-        <div className="max-w-4xl mx-auto text-center mb-24">
+        <div className="max-w-4xl mx-auto text-center mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-6 mb-8"
+            className="flex items-center justify-center gap-6 mb-4"
           >
-            <div className="w-12 h-[1px] bg-[#c5a56d]" />
-            <span className="text-[10px] font-bold tracking-[1em] text-[#c5a56d] uppercase italic" style={{ fontFamily: '"Outfit", sans-serif' }}>Spatial Standards</span>
-            <div className="w-12 h-[1px] bg-[#c5a56d]" />
+            <div className="w-12 h-[1px] bg-[#d4af37]" />
+            <span className="text-[10px] font-bold tracking-[1em] text-[#d4af37] uppercase italic" style={{ fontFamily: '"Outfit", sans-serif' }}>Spatial Standards</span>
+            <div className="w-12 h-[1px] bg-[#d4af37]" />
           </motion.div>
 
           <h2 
-            className="text-5xl md:text-7xl font-bold text-[#1a1a1a] tracking-tight leading-tight mb-8"
+            className="text-5xl md:text-7xl font-bold text-[#1a1a1a] tracking-tight leading-tight mb-4"
             style={{ fontFamily: '"Outfit", sans-serif' }}
           >
             {"Why Choose Us".split(' ').map((word, i) => (
@@ -157,7 +157,7 @@ export const WhyChooseUsMini = () => {
                   whileInView={{ y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  className="inline-block"
+                  className={`inline-block ${word === 'Us' ? 'font-light italic text-[#d4af37]' : ''}`}
                 >
                   {word}
                 </motion.span>

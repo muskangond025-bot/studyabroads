@@ -29,7 +29,7 @@ const AnimatedShader = () => {
     const colorPalette = {
       bg: '#fcfaf6', // editorial cream
       wave1: 'rgba(247, 235, 198, 0.45)', // Soft cream gold
-      wave2: 'rgba(197, 165, 109, 0.16)',  // Antique champagne gold
+      wave2: 'rgba(212, 175, 55, 0.16)',  // Antique champagne gold
       wave3: 'rgba(246, 227, 230, 0.35)'   // Delicate rose blush
     };
 
@@ -181,7 +181,7 @@ const AccordionItem = ({ item, isActive, onMouseEnter, index }: { item: ServiceI
 
       <div className="absolute inset-0 p-10 flex flex-col justify-between">
         <div className="flex justify-between items-start">
-          <div className={`w-2 h-2 rounded-full bg-[#c5a56d] transition-all duration-700 ${isActive ? 'scale-100' : 'scale-0'}`} />
+          <div className={`w-2 h-2 rounded-full bg-[#d4af37] transition-all duration-700 ${isActive ? 'scale-100' : 'scale-0'}`} />
         </div>
 
         <AnimatePresence mode="wait">
@@ -257,7 +257,7 @@ export function LandingAccordionItem() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] bg-gradient-to-tr from-[#1a1a1a]/10 to-[#c5a56d]/5 rounded-full blur-[120px] opacity-70"
+          className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] bg-gradient-to-tr from-[#1a1a1a]/10 to-[#d4af37]/5 rounded-full blur-[120px] opacity-70"
         />
         <motion.div
           animate={{
@@ -270,7 +270,7 @@ export function LandingAccordionItem() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute -bottom-1/4 -right-1/4 w-[700px] h-[700px] bg-gradient-to-bl from-[#c5a56d]/8 to-[#1a1a1a]/10 rounded-full blur-[140px] opacity-60"
+          className="absolute -bottom-1/4 -right-1/4 w-[700px] h-[700px] bg-gradient-to-bl from-[#d4af37]/8 to-[#1a1a1a]/10 rounded-full blur-[140px] opacity-60"
         />
         
         {/* Rotating Globe Outline SVG */}
@@ -311,7 +311,7 @@ export function LandingAccordionItem() {
                       initial={{ y: "100%" }}
                       animate={{ y: 0 }}
                       transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                      className={`inline-block ${i === 1 ? 'text-[#c5a56d] font-semibold' : ''}`}
+                      className={`inline-block ${i === 1 ? 'text-[#d4af37] font-semibold' : ''}`}
                     >
                       {word}
                     </motion.span>
@@ -333,8 +333,8 @@ export function LandingAccordionItem() {
               <motion.button 
                 animate={{
                   boxShadow: [
-                    "0 0 0 0 rgba(197, 165, 109, 0.4)",
-                    "0 0 0 15px rgba(197, 165, 109, 0)"
+                    "0 0 0 0 rgba(212, 175, 55, 0.4)",
+                    "0 0 0 15px rgba(212, 175, 55, 0)"
                   ]
                 }}
                 transition={{
@@ -348,7 +348,7 @@ export function LandingAccordionItem() {
                   Begin Consultation <ArrowRight className="w-4 h-4" />
                 </span>
                 <motion.div 
-                  className="absolute inset-0 bg-[#c5a56d]"
+                  className="absolute inset-0 bg-[#d4af37]"
                   initial={{ y: "100%" }}
                   whileHover={{ y: 0 }}
                   transition={{ duration: 0.4 }}
@@ -356,7 +356,7 @@ export function LandingAccordionItem() {
               </motion.button>
  
               <div className="flex items-center gap-4 text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors duration-300">
-                <MousePointer2 className="w-4 h-4 text-[#c5a56d]" />
+                <MousePointer2 className="w-4 h-4 text-[#d4af37]" />
                 <span className="text-[10px] font-bold tracking-[0.3em] uppercase" style={{ fontFamily: '"Outfit", sans-serif' }}>Explore Universities</span>
               </div>
             </motion.div>

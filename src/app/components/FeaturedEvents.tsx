@@ -130,7 +130,7 @@ export const FeaturedEvents = () => {
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            className="relative w-full bg-[#faf9f6] overflow-hidden flex flex-col items-center justify-center pt-6 pb-12 md:pt-8 md:pb-16 cursor-none"
+            className="relative w-full bg-[#faf9f6] overflow-hidden flex flex-col items-center justify-center pt-6 pb-6 md:pt-8 md:pb-8 cursor-none"
         >
             {/* Filmic Noise & Grain */}
             <div className="absolute inset-0 pointer-events-none z-[60] opacity-[0.03] mix-blend-overlay">
@@ -154,16 +154,16 @@ export const FeaturedEvents = () => {
                 transition={{ type: "spring", stiffness: 250, damping: 25, mass: 0.5 }}
                 style={{ position: 'absolute', left: 0, top: 0, transform: 'translate(-50%, -50%)' }}
             >
-                <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#c5a56d]" />
-                <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#c5a56d]" />
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#c5a56d]" />
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#c5a56d]" />
-                <div className="w-1 h-1 bg-[#c5a56d] rounded-full" />
+                <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#d4af37]" />
+                <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#d4af37]" />
+                <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#d4af37]" />
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#d4af37]" />
+                <div className="w-1 h-1 bg-[#d4af37] rounded-full" />
             </motion.div>
 
             {/* Luminous Background Atmosphere */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[#c5a56d]/5 blur-[150px] rounded-full opacity-50" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[#d4af37]/5 blur-[150px] rounded-full opacity-50" />
             </div>
 
             {/* Exhibition Telemetry Header */}
@@ -178,7 +178,7 @@ export const FeaturedEvents = () => {
                             className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a1a1a] tracking-tight leading-tight"
                             style={{ fontFamily: '"Playfair Display", serif' }}
                         >
-                            Featured <span className="font-light italic text-[#c5a56d]">Universities</span>
+                            Featured <span className="font-light italic text-[#d4af37]">Universities</span>
                         </motion.h2>
                     </div>
                     <motion.p
@@ -214,8 +214,8 @@ export const FeaturedEvents = () => {
                                 <div className="absolute inset-10 flex flex-col justify-end pointer-events-none">
                                     <div className="space-y-4">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-8 h-[1px] bg-[#c5a56d]" />
-                                            <span className="text-[9px] font-bold text-[#c5a56d] tracking-[0.4em] uppercase">{event.category}</span>
+                                            <div className="w-8 h-[1px] bg-[#d4af37]" />
+                                            <span className="text-[9px] font-bold text-[#d4af37] tracking-[0.4em] uppercase">{event.category}</span>
                                         </div>
                                         <h3
                                             className="text-3xl md:text-4xl font-bold text-white leading-[0.9]"
@@ -238,15 +238,15 @@ export const FeaturedEvents = () => {
                 <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-8 md:px-32 pointer-events-none z-50">
                     <button
                         onClick={(e) => { e.stopPropagation(); rotate('prev'); }}
-                        className="w-20 h-20 border border-[#1a1a1a]/5 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-2xl pointer-events-auto hover:border-[#c5a56d]/40 hover:bg-white/40 transition-all duration-500 group/btn"
+                        className="w-20 h-20 border border-[#1a1a1a]/5 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-2xl pointer-events-auto hover:border-[#d4af37]/40 hover:bg-white/40 transition-all duration-500 group/btn"
                     >
-                        <ChevronLeft className="text-[#1a1a1a]/40 group-hover/btn:text-[#c5a56d] transition-colors" />
+                        <ChevronLeft className="text-[#1a1a1a]/40 group-hover/btn:text-[#d4af37] transition-colors" />
                     </button>
                     <button
                         onClick={(e) => { e.stopPropagation(); rotate('next'); }}
-                        className="w-20 h-20 border border-[#1a1a1a]/5 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-2xl pointer-events-auto hover:border-[#c5a56d]/40 hover:bg-white/40 transition-all duration-500 group/btn"
+                        className="w-20 h-20 border border-[#1a1a1a]/5 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-2xl pointer-events-auto hover:border-[#d4af37]/40 hover:bg-white/40 transition-all duration-500 group/btn"
                     >
-                        <ChevronRight className="text-[#1a1a1a]/40 group-hover/btn:text-[#c5a56d] transition-colors" />
+                        <ChevronRight className="text-[#1a1a1a]/40 group-hover/btn:text-[#d4af37] transition-colors" />
                     </button>
                 </div>
             </div>
@@ -266,9 +266,9 @@ export const FeaturedEvents = () => {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             onClick={() => setIsExpanded(false)}
-                            className="absolute top-16 right-16 w-16 h-16 border border-[#1a1a1a]/5 rounded-full flex items-center justify-center hover:border-[#c5a56d]/40 transition-all group/close bg-white/20"
+                            className="absolute top-16 right-16 w-16 h-16 border border-[#1a1a1a]/5 rounded-full flex items-center justify-center hover:border-[#d4af37]/40 transition-all group/close bg-white/20"
                         >
-                            <X className="text-[#1a1a1a]/40 group-hover/close:text-[#c5a56d] transition-colors" />
+                            <X className="text-[#1a1a1a]/40 group-hover/close:text-[#d4af37] transition-colors" />
                         </motion.button>
 
                         <div className="max-w-[1400px] w-full grid lg:grid-cols-2 gap-24 items-center">
@@ -289,8 +289,8 @@ export const FeaturedEvents = () => {
                             <div className="space-y-16">
                                 <div className="space-y-8">
                                     <div className="flex items-center gap-4">
-                                        <div className="w-12 h-[1px] bg-[#c5a56d]" />
-                                        <span className="text-[12px] font-bold tracking-[1em] text-[#c5a56d] uppercase">{eventCards[currentIndex].category}</span>
+                                        <div className="w-12 h-[1px] bg-[#d4af37]" />
+                                        <span className="text-[12px] font-bold tracking-[1em] text-[#d4af37] uppercase">{eventCards[currentIndex].category}</span>
                                     </div>
                                     <h2
                                         className="text-7xl md:text-9xl font-bold text-[#1a1a1a] leading-[0.85] tracking-tighter"

@@ -9,6 +9,7 @@ interface MilestoneData {
   tabLabel: string;
   tag: string;
   title: string;
+  titleSegments: { text: string; highlight?: boolean; italic?: boolean }[];
   description: string;
   bullets?: string[];
   ctaText: string;
@@ -21,6 +22,12 @@ const milestoneData: MilestoneData[] = [
     tabLabel: "Foundations",
     tag: "01 • STUDY ABROAD FOUNDATIONS",
     title: "Pioneering elite study abroad strategies in London.",
+    titleSegments: [
+      { text: "Pioneering " },
+      { text: "elite study abroad", highlight: true, italic: true },
+      { text: " strategies in " },
+      { text: "London.", highlight: true }
+    ],
     description: "Established our premier global study abroad advisory system, pioneering customized international student portfolio mentoring and high-fidelity elite university preparation pipelines.",
     ctaText: "Explore Foundations",
     imageUrl: "/london_foundations.png"
@@ -30,6 +37,12 @@ const milestoneData: MilestoneData[] = [
     tabLabel: "Expansion",
     tag: "02 • GLOBAL STUDY PATHWAYS",
     title: "Expanding premium study abroad hubs worldwide.",
+    titleSegments: [
+      { text: "Expanding " },
+      { text: "premium study abroad", highlight: true, italic: true },
+      { text: " hubs " },
+      { text: "worldwide.", highlight: true }
+    ],
     description: "Expanded our global footprint to Toronto, Singapore, and Sydney, establishing direct fellowship pipelines and secure study abroad pathways with leading research universities.",
     ctaText: "Explore Pathways",
     imageUrl: "/global_pathways.png"
@@ -39,6 +52,12 @@ const milestoneData: MilestoneData[] = [
     tabLabel: "Achievements",
     tag: "03 • STUDY ABROAD PRESTIGE",
     title: "Celebrating top-percentile study abroad placements.",
+    titleSegments: [
+      { text: "Celebrating " },
+      { text: "top-percentile", highlight: true, italic: true },
+      { text: " study abroad " },
+      { text: "placements.", highlight: true }
+    ],
     description: "Meticulously engineering academic portfolios that capture elite global university interest, achieving industry-leading study abroad placement metrics year-over-year.",
     bullets: [
       "Over 500+ successful global study abroad placements",
@@ -50,6 +69,15 @@ const milestoneData: MilestoneData[] = [
     imageUrl: "/placement_prestige.png"
   }
 ];
+
+const getFullImageUrl = (url: string) => {
+  const base = import.meta.env.BASE_URL || '/';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) {
+    return url;
+  }
+  const cleanUrl = url.startsWith('/') ? url.slice(1) : url;
+  return `${base}${cleanUrl}`;
+};
 
 const ThreeDImageCard = ({ imageUrl, altText }: { imageUrl: string; altText: string }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -86,13 +114,13 @@ const ThreeDImageCard = ({ imageUrl, altText }: { imageUrl: string; altText: str
       style={{ perspective: 1000 }}
     >
       {/* 3D Dynamic Glow Aura */}
-      <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#c5a56d]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10" />
+      <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#d4af37]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10" />
 
       {/* Dynamic Rotational Radar Grid in background */}
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-        className="absolute w-72 h-72 border border-[#c5a56d]/10 rounded-full border-dashed pointer-events-none opacity-40 group-hover:scale-105 transition-transform duration-1000 z-0"
+        className="absolute w-72 h-72 border border-[#d4af37]/10 rounded-full border-dashed pointer-events-none opacity-40 group-hover:scale-105 transition-transform duration-1000 z-0"
       />
 
       <motion.div
@@ -106,7 +134,7 @@ const ThreeDImageCard = ({ imageUrl, altText }: { imageUrl: string; altText: str
         className="relative z-10 transition-transform duration-200 ease-out rounded-3xl overflow-hidden border border-neutral-200/50 shadow-2xl"
       >
         <img
-          src={imageUrl}
+          src={getFullImageUrl(imageUrl)}
           alt={altText}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
@@ -138,14 +166,14 @@ export function OurServices() {
       <div className="container mx-auto px-8 relative z-10 max-w-7xl">
         {/* Header Section */}
         <div className="text-center mb-12 space-y-4">
-          <span className="text-[10px] font-bold tracking-[0.4em] text-[#c5a56d] uppercase block">
+          <span className="text-[10px] font-bold tracking-[0.4em] text-[#d4af37] uppercase block">
             Academic Milestones
           </span>
           <h2
             className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a1a1a] tracking-tight leading-tight"
             style={{ fontFamily: '"Playfair Display", serif' }}
           >
-            A Legacy of <span className="font-light italic text-[#c5a56d]">Strategic Placements</span>
+            A Legacy of <span className="font-light italic text-[#d4af37]">Strategic Placements</span>
           </h2>
           <p
             className="text-base md:text-lg text-[#1a1a1a]/40 font-light italic max-w-2xl mx-auto leading-relaxed"
@@ -155,21 +183,37 @@ export function OurServices() {
           </p>
         </div>
 
-        {/* Tab Switcher: Inspired by Shadcn */}
-        <div className="flex justify-center gap-3 mb-16">
-          {milestoneData.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-[0.15em] transition-all duration-300 cursor-pointer ${
-                activeTab === tab.id
-                  ? "bg-[#1a1a1a] text-white shadow-md scale-105"
-                  : "bg-white border border-neutral-200 text-neutral-600 hover:bg-neutral-50"
-              }`}
-            >
-              {tab.tabLabel}
-            </button>
-          ))}
+        {/* Tab Switcher: Fluid Sliding Accordion Tabs */}
+        <div className="flex justify-center mb-16">
+          <div className="inline-flex items-center bg-[#faf9f6] border border-[#1a1a1a]/5 p-1.5 rounded-full gap-1 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03),0_8px_20px_-8px_rgba(212,175,55,0.08)] relative">
+            {milestoneData.map((tab) => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  onMouseEnter={() => setActiveTab(tab.id)}
+                  className="relative px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-colors duration-500 cursor-pointer select-none"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTabIndicator"
+                      className="absolute inset-0 bg-[#1a1a1a] rounded-full border border-[#d4af37]/35 shadow-[0_8px_20px_rgba(26,26,26,0.25)]"
+                      transition={{ type: "spring", stiffness: 360, damping: 30 }}
+                    />
+                  )}
+                  <span className={`relative z-10 transition-colors duration-500 ${
+                    isActive 
+                      ? "text-white" 
+                      : "text-[#1a1a1a]/60 hover:text-[#1a1a1a]"
+                  }`}>
+                    {tab.tabLabel}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Responsive Redesigned Card Container */}
@@ -186,16 +230,79 @@ export function OurServices() {
               
               {/* Left Column: Strategy Info */}
               <div className="lg:col-span-7 space-y-8 text-left">
-                <span className="text-[10px] font-bold text-[#c5a56d] tracking-[0.3em] uppercase block">
+                <span className="text-[10px] font-bold text-[#d4af37] tracking-[0.3em] uppercase block">
                   {currentMilestone.tag}
                 </span>
                 
-                <h3
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#1a1a1a] leading-none"
+                <motion.h3
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        staggerChildren: 0.12,
+                        delayChildren: 0.1
+                      }
+                    }
+                  }}
+                  initial="hidden"
+                  animate="visible"
+                  className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#1a1a1a] leading-[1.15]"
                   style={{ fontFamily: '"Playfair Display", serif' }}
                 >
-                  {currentMilestone.title}
-                </h3>
+                  {currentMilestone.titleSegments.map((segment, index) => {
+                    if (segment.highlight) {
+                      return (
+                        <motion.span
+                          key={index}
+                          variants={{
+                            hidden: { opacity: 0, y: 15 },
+                            visible: {
+                              opacity: 1,
+                              y: 0,
+                              transition: {
+                                type: "spring",
+                                stiffness: 90,
+                                damping: 14
+                              }
+                            }
+                          }}
+                          className="relative inline-block mr-1"
+                        >
+                          <span className={`bg-gradient-to-r from-[#bfa254] via-[#e5cf92] to-[#ab8e3f] bg-clip-text text-transparent font-extrabold ${segment.italic ? 'italic font-serif' : ''}`}>
+                            {segment.text}
+                          </span>
+                          <motion.span
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{ delay: 0.5 + index * 0.1, duration: 0.7, ease: "easeOut" }}
+                            className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[#d4af37]/20 via-[#d4af37]/80 to-[#d4af37]/20 origin-left"
+                          />
+                        </motion.span>
+                      );
+                    }
+                    return (
+                      <motion.span
+                        key={index}
+                        variants={{
+                          hidden: { opacity: 0, y: 15 },
+                          visible: {
+                            opacity: 1,
+                            y: 0,
+                            transition: {
+                              type: "spring",
+                              stiffness: 90,
+                              damping: 14
+                            }
+                          }
+                        }}
+                        className="inline-block text-[#1a1a1a]"
+                      >
+                        {segment.text}
+                      </motion.span>
+                    );
+                  })}
+                </motion.h3>
                 
                 <p className="text-lg md:text-xl text-[#1a1a1a]/70 font-light leading-relaxed max-w-2xl">
                   {currentMilestone.description}
@@ -206,8 +313,8 @@ export function OurServices() {
                   <div className="space-y-3 pt-2">
                     {currentMilestone.bullets.map((bullet, idx) => (
                       <div key={idx} className="flex gap-4 items-center text-[#1a1a1a]/80">
-                        <div className="w-5 h-5 rounded-full bg-[#c5a56d]/10 border border-[#c5a56d]/30 flex items-center justify-center shrink-0">
-                          <Check className="w-3 h-3 text-[#c5a56d]" strokeWidth={3} />
+                        <div className="w-5 h-5 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/30 flex items-center justify-center shrink-0">
+                          <Check className="w-3 h-3 text-[#d4af37]" strokeWidth={3} />
                         </div>
                         <span className="text-base font-medium tracking-tight leading-relaxed">{bullet}</span>
                       </div>
@@ -222,7 +329,7 @@ export function OurServices() {
                       {currentMilestone.ctaText} <ArrowRight className="w-4 h-4" />
                     </span>
                     <motion.div
-                      className="absolute inset-0 bg-[#c5a56d]"
+                      className="absolute inset-0 bg-[#d4af37]"
                       initial={{ y: "100%" }}
                       whileHover={{ y: 0 }}
                       transition={{ duration: 0.4 }}

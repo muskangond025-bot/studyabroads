@@ -202,15 +202,15 @@ export const OurPlanningProcessMini = () => {
     const pathLength = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
     return (
-        <section ref={containerRef} className="w-full py-24 md:py-32 bg-[#F8F9FA] overflow-hidden">
+        <section ref={containerRef} className="w-full pt-16 pb-8 md:pt-16 md:pb-12 bg-[#F8F9FA] overflow-hidden">
             <div className="max-w-7xl mx-auto px-8">
                 {/* Section Title */}
-                <div className="relative mb-24 flex flex-col items-center text-center">
+                <div className="relative mb-12 flex flex-col items-center text-center">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="flex items-center gap-6 mb-8"
+                        className="flex items-center gap-6 mb-4"
                     >
                         <div className="w-12 h-[1px] bg-[#D4AF37]" />
                         <span className="text-[10px] font-bold tracking-[1em] text-[#D4AF37] uppercase italic" style={{ fontFamily: '"Outfit", sans-serif' }}>Operational Excellence</span>
@@ -218,10 +218,10 @@ export const OurPlanningProcessMini = () => {
                     </motion.div>
 
                     <h2 
-                        className="text-5xl md:text-7xl font-bold text-[#1a1a1a] tracking-tight leading-tight mb-8"
+                        className="text-5xl md:text-7xl font-bold text-[#1a1a1a] tracking-tight leading-tight mb-4"
                         style={{ fontFamily: '"Outfit", sans-serif' }}
                     >
-                        Kinetic <span className="text-neutral-400 italic">Planning</span> Method
+                        Kinetic <span className="font-light italic text-[#D4AF37]">Planning</span> Method
                     </h2>
 
                     <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 mt-4 text-[#666666]">

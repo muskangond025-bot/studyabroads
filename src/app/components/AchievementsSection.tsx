@@ -179,7 +179,7 @@ const MetricCard = ({
                 rotateY,
                 perspective: 1500
             }}
-            className="relative group bg-white/50 backdrop-blur-3xl p-8 border border-[#1a1a1a]/5 hover:border-[#c5a56d]/50 transition-all duration-500 flex flex-col justify-between aspect-square overflow-hidden rounded-[32px] shadow-2xl shadow-neutral-200/50 w-full"
+            className="relative group bg-white/50 backdrop-blur-3xl p-8 border border-[#1a1a1a]/5 hover:border-[#d4af37]/50 transition-all duration-500 flex flex-col justify-between aspect-square overflow-hidden rounded-[32px] shadow-2xl shadow-neutral-200/50 w-full"
         >
             {/* Shimmer Draw Overlay */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none z-20">
@@ -188,7 +188,7 @@ const MetricCard = ({
                     height="100%"
                     rx="32"
                     fill="none"
-                    stroke="#c5a56d"
+                    stroke="#d4af37"
                     strokeWidth="1.5"
                     strokeDasharray="0 100%"
                     animate={{ strokeDasharray: isHovered ? "100% 0" : "0 100%" }}
@@ -200,7 +200,7 @@ const MetricCard = ({
             <motion.div
                 animate={{ top: ["-100%", "200%"] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                className="absolute left-0 right-0 h-[100px] bg-gradient-to-b from-transparent via-[#c5a56d]/5 to-transparent z-0 pointer-events-none"
+                className="absolute left-0 right-0 h-[100px] bg-gradient-to-b from-transparent via-[#d4af37]/5 to-transparent z-0 pointer-events-none"
             />
 
             {/* Icon Banner */}
@@ -209,9 +209,9 @@ const MetricCard = ({
                 <motion.div
                     animate={{ rotate: isHovered ? 360 : 0, scale: isHovered ? 1.08 : 1 }}
                     transition={{ duration: 0.8, ease: "backOut" }}
-                    className="p-4 bg-white rounded-2xl border border-[#c5a56d]/15 shadow-sm"
+                    className="p-4 bg-white rounded-2xl border border-[#d4af37]/15 shadow-sm"
                 >
-                    <achievement.icon className="w-8 h-8 text-[#c5a56d]" />
+                    <achievement.icon className="w-8 h-8 text-[#d4af37]" />
                 </motion.div>
             </div>
 
@@ -224,7 +224,7 @@ const MetricCard = ({
                                 initial={{ opacity: 0, x: 0 }}
                                 animate={{ opacity: 0.12, x: 10, y: 5 }}
                                 exit={{ opacity: 0, x: 0 }}
-                                className="absolute inset-0 text-6xl md:text-7xl font-bold text-[#c5a56d] tracking-tighter blur-[4px] pointer-events-none"
+                                className="absolute inset-0 text-6xl md:text-7xl font-bold text-[#d4af37] tracking-tighter blur-[4px] pointer-events-none"
                                 style={{ fontFamily: '"Playfair Display", serif' }}
                             >
                                 {count}
@@ -239,18 +239,18 @@ const MetricCard = ({
                         <span className="text-6xl md:text-7xl font-bold text-[#1a1a1a] tracking-tighter leading-none" style={{ fontFamily: '"Playfair Display", serif' }}>
                             {count}
                         </span>
-                        <span className="text-2xl font-light text-[#c5a56d] opacity-90">
+                        <span className="text-2xl font-light text-[#d4af37] opacity-90">
                             {achievement.number.includes('+') ? '+' : achievement.number.includes('%') ? '%' : ''}
                         </span>
                     </motion.div>
                 </div>
-                <div className="w-12 h-[1.5px] bg-[#c5a56d]/30 mt-3 group-hover:w-full transition-all duration-1000" />
+                <div className="w-12 h-[1.5px] bg-[#d4af37]/30 mt-3 group-hover:w-full transition-all duration-1000" />
             </div>
 
             {/* Label & description */}
             <div className="relative z-10 space-y-3 mt-4 text-left">
                 <div className="flex items-center gap-2">
-                    <div className="w-3 h-[1px] bg-[#c5a56d]" />
+                    <div className="w-3 h-[1px] bg-[#d4af37]" />
                     <h3 className="text-[10px] font-bold tracking-[0.4em] text-[#1a1a1a] uppercase">{achievement.label}</h3>
                 </div>
                 <p className="text-[14px] text-[#1a1a1a]/75 font-normal leading-relaxed">
@@ -282,11 +282,11 @@ export const AchievementsSection = () => {
     return (
         <section
             ref={containerRef}
-            className="relative w-full pt-12 pb-16 md:pt-16 md:pb-24 bg-[#fdfbf7] overflow-hidden"
+            className="relative w-full pt-4 pb-8 md:pt-6 md:pb-12 bg-[#fdfbf7] overflow-hidden"
         >
             {/* Atmospheric Background */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(197,165,109,0.02)_0%,transparent_75%)]" />
+                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(212, 175, 55,0.02)_0%,transparent_75%)]" />
                 <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
                     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                         <filter id="noiseHighPerf">
@@ -299,25 +299,24 @@ export const AchievementsSection = () => {
 
             <div className="relative z-10 container mx-auto px-8 max-w-7xl">
                 {/* Cinematic Header Sequence */}
-                <div className="max-w-5xl mb-12 md:mb-16 text-left">
-                    <h2
-                        className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#1a1a1a] tracking-tight leading-[1.0] mb-4 md:mb-6"
+                <div className="max-w-3xl mx-auto mb-4 md:mb-6 text-center flex flex-col items-center justify-center">
+                    <div className="flex items-center justify-center gap-3 mb-1">
+                        <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+                        <span className="text-[10px] font-extrabold tracking-[0.35em] text-[#d4af37] uppercase font-mono">
+                            03 / Achievements
+                        </span>
+                        <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+                    </div>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a1a1a] tracking-tight leading-tight text-center"
                         style={{ fontFamily: '"Playfair Display", serif' }}
                     >
-                        {"Quantifying".split('').map((char, i) => (
-                            <motion.span
-                                key={i}
-                                initial={{ opacity: 0, y: 50, rotateX: -90 }}
-                                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                                transition={{ duration: 1, delay: i * 0.03, ease: [0.22, 1, 0.36, 1] }}
-                                className="inline-block origin-bottom"
-                            >
-                                {char}
-                            </motion.span>
-                        ))}
-                        <br />
-                        <span className="font-light italic text-[#c5a56d] block">Performance</span>
-                    </h2>
+                        Quantifying <span className="font-light italic text-[#d4af37]">Performance</span>
+                    </motion.h2>
                 </div>
 
                 {/* Grid container with hover listeners to trigger hand rotations when stacked */}

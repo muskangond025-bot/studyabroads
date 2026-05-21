@@ -10,6 +10,15 @@ interface SlideData {
   imageUrl: string;
 }
 
+const getFullImageUrl = (url: string) => {
+  const base = import.meta.env.BASE_URL || '/';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) {
+    return url;
+  }
+  const cleanUrl = url.startsWith('/') ? url.slice(1) : url;
+  return `${base}${cleanUrl}`;
+};
+
 const slides: SlideData[] = [
   {
     title: 'University Placements',
@@ -26,8 +35,7 @@ const slides: SlideData[] = [
     description:
       'Maximize your tuition coverage with our strategic scholarship scouting. We specialize in mapping international merit fellowships, fully-funded research grants, and athletic/creative scholarships.',
     accent: '#d4af37',
-    imageUrl:
-      'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900&h=1200&fit=crop&q=80',
+    imageUrl: '/scholarship_strategy.png',
   },
   {
     title: 'Visa & Compliance',
@@ -211,7 +219,7 @@ export default function ElegantCarousel() {
             className={`carousel-image-frame ${isTransitioning ? 'transitioning' : 'visible'}`}
           >
             <img
-              src={currentSlide.imageUrl}
+              src={getFullImageUrl(currentSlide.imageUrl)}
               alt={currentSlide.title}
               className="carousel-image"
             />

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
     Calendar,
     MessageSquare,
@@ -14,7 +14,7 @@ import {
     ShieldCheck,
     GraduationCap
 } from 'lucide-react';
-import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
+import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'motion/react';
 
 export const MultiStepQuoteForm = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -30,6 +30,36 @@ export const MultiStepQuoteForm = () => {
     });
 
     const cardRef = useRef<HTMLDivElement>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const [isDesktop, setIsDesktop] = useState(true);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsDesktop(window.innerWidth >= 1024);
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"]
+    });
+
+    const smoothProgress = useSpring(scrollYProgress, { stiffness: 60, damping: 20, restDelta: 0.001 });
+    
+    const x3DVal = useTransform(smoothProgress, [0, 1], [1, -1]);
+    const x3D = useTransform(x3DVal, val => val * (isDesktop ? 150 : 30));
+
+    const rotateY3DVal = useTransform(smoothProgress, [0, 1], [-1, 1]);
+    const rotateY3D = useTransform(rotateY3DVal, val => val * (isDesktop ? 15 : 5));
+
+    const z3DVal = useTransform(smoothProgress, [0, 0.5, 1], [-1, 0, -1]);
+    const z3D = useTransform(z3DVal, val => val * (isDesktop ? -120 : -30));
+
+    const opacity3D = useTransform(smoothProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
+
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const [isHovered, setIsHovered] = useState(false);
 
@@ -81,7 +111,7 @@ export const MultiStepQuoteForm = () => {
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="max-w-4xl mx-auto px-8 py-24 bg-white/80 backdrop-blur-3xl border border-[#c5a56d]/20 rounded-[40px] shadow-2xl text-center space-y-12 relative overflow-hidden"
+                className="max-w-4xl mx-auto px-8 py-24 bg-white/80 backdrop-blur-3xl border border-[#d4af37]/20 rounded-[40px] shadow-2xl text-center space-y-12 relative overflow-hidden"
             >
                 {/* Verification Scanning sweeps */}
                 <div className="absolute inset-0 opacity-[0.015] pointer-events-none z-0">
@@ -93,10 +123,10 @@ export const MultiStepQuoteForm = () => {
                     </svg>
                 </div>
 
-                <div className="w-24 h-24 rounded-full border border-[#c5a56d] mx-auto flex items-center justify-center relative z-10">
-                    <CheckCircle2 className="w-10 h-10 text-[#c5a56d]" />
+                <div className="w-24 h-24 rounded-full border border-[#d4af37] mx-auto flex items-center justify-center relative z-10">
+                    <CheckCircle2 className="w-10 h-10 text-[#d4af37]" />
                     <motion.div
-                        className="absolute inset-0 rounded-full border border-[#c5a56d]"
+                        className="absolute inset-0 rounded-full border border-[#d4af37]"
                         animate={{ scale: [1, 1.5], opacity: [1, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
                     />
@@ -106,7 +136,7 @@ export const MultiStepQuoteForm = () => {
                         className="text-5xl md:text-7xl font-serif italic text-[#1a1a1a] tracking-tighter"
                         style={{ fontFamily: '"Playfair Display", serif' }}
                     >
-                        Profile <span className="not-italic text-[#c5a56d]">Archived.</span>
+                        Profile <span className="not-italic text-[#d4af37]">Archived.</span>
                     </h2>
                     <p 
                         className="text-lg md:text-xl text-[#1a1a1a]/60 italic max-w-xl mx-auto leading-relaxed"
@@ -118,7 +148,7 @@ export const MultiStepQuoteForm = () => {
                 <div className="relative z-10">
                     <button
                         onClick={() => window.location.reload()}
-                        className="px-12 py-5 bg-[#1a1a1a] text-[#fdfaf3] rounded-full font-bold tracking-[0.4em] uppercase text-[10px] hover:bg-[#c5a56d] hover:text-[#1a1a1a] transition-colors duration-500 shadow-xl"
+                        className="px-12 py-5 bg-[#1a1a1a] text-[#fdfaf3] rounded-full font-bold tracking-[0.4em] uppercase text-[10px] hover:bg-[#d4af37] hover:text-[#1a1a1a] transition-colors duration-500 shadow-xl"
                     >
                         Return to Navigation
                     </button>
@@ -128,7 +158,7 @@ export const MultiStepQuoteForm = () => {
     }
 
     return (
-        <section className="relative w-full overflow-hidden bg-[#faf9f6] pb-16 md:pb-24">
+        <section ref={sectionRef} className="relative w-full overflow-hidden bg-[#faf9f6] pb-16 md:pb-24">
             {/* 3D Floating Geometric Background Elements */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" style={{ perspective: 1000 }}>
                 {/* Large Gold Sphere */}
@@ -141,7 +171,7 @@ export const MultiStepQuoteForm = () => {
                     transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute -top-[10%] -left-[10%] w-[500px] h-[500px] rounded-full"
                     style={{
-                        background: 'radial-gradient(circle at 30% 30%, rgba(197, 165, 109, 0.15), rgba(197, 165, 109, 0.02) 60%, transparent 80%)',
+                        background: 'radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.02) 60%, transparent 80%)',
                         boxShadow: 'inset -20px -20px 60px rgba(0,0,0,0.05)',
                         filter: 'blur(10px)'
                     }}
@@ -156,7 +186,7 @@ export const MultiStepQuoteForm = () => {
                     transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute top-[30%] -right-[5%] w-[400px] h-[400px] rounded-full"
                     style={{
-                        background: 'radial-gradient(circle at 40% 40%, rgba(197, 165, 109, 0.1), transparent 70%)',
+                        background: 'radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.1), transparent 70%)',
                         filter: 'blur(20px)'
                     }}
                 />
@@ -167,7 +197,7 @@ export const MultiStepQuoteForm = () => {
                         rotateX: [60, 75, 60]
                     }}
                     transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                    className="absolute -bottom-[20%] left-[20%] w-[800px] h-[800px] rounded-full border border-[#c5a56d]/30"
+                    className="absolute -bottom-[20%] left-[20%] w-[800px] h-[800px] rounded-full border border-[#d4af37]/30"
                     style={{ transformStyle: 'preserve-3d' }}
                 />
             </div>
@@ -182,9 +212,9 @@ export const MultiStepQuoteForm = () => {
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
-                                className="flex items-center gap-4 text-[#c5a56d]"
+                                className="flex items-center gap-4 text-[#d4af37]"
                             >
-                                <span className="w-12 h-[1px] bg-[#c5a56d]/50"></span>
+                                <span className="w-12 h-[1px] bg-[#d4af37]/50"></span>
                                 <span className="text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Inquiry Terminal</span>
                             </motion.div>
                             <h1 
@@ -204,7 +234,7 @@ export const MultiStepQuoteForm = () => {
                                                 delay: i * 0.2
                                             }}
                                             style={{ transformOrigin: "bottom", display: "inline-block" }}
-                                            className={i === 2 ? "not-italic text-[#c5a56d]" : ""}
+                                            className={i === 2 ? "not-italic text-[#d4af37]" : ""}
                                         >
                                             {word}
                                         </motion.span>
@@ -233,9 +263,9 @@ export const MultiStepQuoteForm = () => {
                                 viewport={{ once: true, amount: 0.5 }}
                                 transition={{ type: "spring", stiffness: 80, damping: 15, delay: 0.8 }}
                                 style={{ perspective: 1000, transformStyle: "preserve-3d" }}
-                                className="p-6 bg-white/40 border border-[#c5a56d]/20 rounded-2xl relative group hover:shadow-xl hover:bg-white/60 transition-colors"
+                                className="p-6 bg-white/40 border border-[#d4af37]/20 rounded-2xl relative group hover:shadow-xl hover:bg-white/60 transition-colors"
                             >
-                                <span className="text-[8px] font-bold tracking-[0.3em] text-[#c5a56d] uppercase font-mono" style={{ transform: 'translateZ(20px)', display: 'block' }}>Operational Line</span>
+                                <span className="text-[8px] font-bold tracking-[0.3em] text-[#d4af37] uppercase font-mono" style={{ transform: 'translateZ(20px)', display: 'block' }}>Operational Line</span>
                                 <p className="text-[#1a1a1a] font-serif italic text-lg mt-1" style={{ transform: 'translateZ(30px)' }}>+44 (20) 7946 0192</p>
                             </motion.div>
                             <motion.div 
@@ -245,9 +275,9 @@ export const MultiStepQuoteForm = () => {
                                 viewport={{ once: true, amount: 0.5 }}
                                 transition={{ type: "spring", stiffness: 80, damping: 15, delay: 0.95 }}
                                 style={{ perspective: 1000, transformStyle: "preserve-3d" }}
-                                className="p-6 bg-white/40 border border-[#c5a56d]/20 rounded-2xl relative group hover:shadow-xl hover:bg-white/60 transition-colors"
+                                className="p-6 bg-white/40 border border-[#d4af37]/20 rounded-2xl relative group hover:shadow-xl hover:bg-white/60 transition-colors"
                             >
-                                <span className="text-[8px] font-bold tracking-[0.3em] text-[#c5a56d] uppercase font-mono" style={{ transform: 'translateZ(20px)', display: 'block' }}>Direct Dispatch</span>
+                                <span className="text-[8px] font-bold tracking-[0.3em] text-[#d4af37] uppercase font-mono" style={{ transform: 'translateZ(20px)', display: 'block' }}>Direct Dispatch</span>
                                 <p className="text-[#1a1a1a] font-serif italic text-lg mt-1" style={{ transform: 'translateZ(30px)' }}>advisors@globalpath.com</p>
                             </motion.div>
                         </div>
@@ -260,58 +290,62 @@ export const MultiStepQuoteForm = () => {
                             viewport={{ once: true, amount: 0.5 }}
                             transition={{ type: "spring", stiffness: 80, damping: 15, delay: 1.1 }}
                             style={{ perspective: 1000, transformStyle: "preserve-3d" }}
-                            className="p-8 bg-white/50 backdrop-blur-xl border border-[#c5a56d]/20 rounded-3xl flex items-center gap-6 group relative hover:shadow-xl hover:bg-white/80 transition-colors overflow-hidden"
+                            className="p-8 bg-white/50 backdrop-blur-xl border border-[#d4af37]/20 rounded-3xl flex items-center gap-6 group relative hover:shadow-xl hover:bg-white/80 transition-colors overflow-hidden"
                         >
                             <div className="w-14 h-14 rounded-full bg-[#1a1a1a] flex items-center justify-center transition-transform duration-700 group-hover:rotate-[360deg] relative z-10 shadow-md">
-                                <ShieldCheck className="w-6 h-6 text-[#c5a56d]" />
+                                <ShieldCheck className="w-6 h-6 text-[#d4af37]" />
                             </div>
                             <div className="relative z-10">
-                                <span className="text-[9px] font-bold tracking-[0.2em] text-[#c5a56d] uppercase font-mono">Secure Sync</span>
+                                <span className="text-[9px] font-bold tracking-[0.2em] text-[#d4af37] uppercase font-mono">Secure Sync</span>
                                 <p className="text-xs text-[#1a1a1a]/60 mt-1">End-to-end encrypted student database protocol.</p>
                             </div>
                             {/* Scanning radar accent line */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#c5a56d]/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d4af37]/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
                         </motion.div>
                     </div>
 
                     {/* Right Side: The Premium Form Console */}
                     <div className="w-full">
                         <motion.div
-                            initial={{ opacity: 0, y: 150, scale: 0.8, rotateX: 15, rotateY: -15 }}
-                            whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0, rotateY: 0 }}
-                            viewport={{ once: true, amount: 0.3 }}
-                            transition={{ 
-                                duration: 1.5, 
-                                ease: [0.22, 1, 0.36, 1],
+                            style={{
+                                x: x3D,
+                                rotateY: rotateY3D,
+                                z: z3D,
+                                opacity: opacity3D,
+                                perspective: 1500,
+                                transformStyle: 'preserve-3d'
                             }}
-                            style={{ perspective: 1500 }}
                         >
                             <motion.div
                                 ref={cardRef}
                                 onMouseMove={handleMouseMove}
                                 onMouseLeave={handleMouseLeave}
+                                initial={{ opacity: 0, x: 100, scale: 0.95 }}
+                                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
                                 style={{
                                     rotateX: rotateXSpring,
                                     rotateY: rotateYSpring,
                                     transformStyle: 'preserve-3d',
                                     perspective: 2000
                                 }}
-                                className="bg-white p-10 md:p-16 rounded-[48px] shadow-[0_45px_100px_-25px_rgba(0,0,0,0.06)] hover:shadow-[0_60px_120px_-20px_rgba(197,165,109,0.18)] transition-all duration-700 border border-black/5 relative group"
+                                className="bg-white p-6 md:p-10 rounded-[36px] shadow-[0_45px_100px_-25px_rgba(0,0,0,0.06)] hover:shadow-[0_60px_120px_-20px_rgba(212, 175, 55,0.18)] transition-all duration-700 border border-black/5 relative group"
                             >
                             {/* Custom Mouse Spotlight Highlight */}
                             <div 
                                 className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                                 style={{
-                                    background: `radial-gradient(circle 350px at ${mousePos.x}px ${mousePos.y}px, rgba(197, 165, 109, 0.04), transparent 80%)`
+                                    background: `radial-gradient(circle 350px at ${mousePos.x}px ${mousePos.y}px, rgba(212, 175, 55, 0.04), transparent 80%)`
                                 }}
                             />
 
                             {/* Custom Mouse-Tracking Border Ray */}
                             <div 
-                                className="absolute inset-0 rounded-[48px] pointer-events-none z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                className="absolute inset-0 rounded-[36px] pointer-events-none z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                                 style={{
                                     padding: '1.5px',
-                                    background: `radial-gradient(circle 250px at ${mousePos.x}px ${mousePos.y}px, #c5a56d, transparent 75%)`,
+                                    background: `radial-gradient(circle 250px at ${mousePos.x}px ${mousePos.y}px, #d4af37, transparent 75%)`,
                                     mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
                                     maskComposite: 'exclude',
                                     WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
@@ -319,8 +353,8 @@ export const MultiStepQuoteForm = () => {
                                 }}
                             />
 
-                            <form onSubmit={handleSubmit} className="relative z-10 space-y-10" style={{ transformStyle: 'preserve-3d' }}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10" style={{ transform: 'translateZ(60px)', transformStyle: 'preserve-3d' }}>
+                            <form onSubmit={handleSubmit} className="relative z-10 space-y-6" style={{ transformStyle: 'preserve-3d' }}>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5" style={{ transform: 'translateZ(60px)', transformStyle: 'preserve-3d' }}>
                                     <FormField label="Full Name" name="name" icon={User} placeholder="Sarah Mitchell" value={formData.name} onChange={handleChange} required />
                                     <FormField label="Email Link" name="email" type="email" icon={Mail} placeholder="sarah@vision.com" value={formData.email} onChange={handleChange} required />
                                     <FormField label="Voice Link" name="phone" type="tel" icon={Phone} placeholder="+1 555 000 0000" value={formData.phone} onChange={handleChange} required />
@@ -365,7 +399,7 @@ export const MultiStepQuoteForm = () => {
                                     <FormField label="Academic Stand" name="gpa" type="text" icon={Clock} placeholder="e.g. 3.8 GPA or 85%" value={formData.gpa} onChange={handleChange} required />
                                 </div>
 
-                                <div className="space-y-4" style={{ transform: 'translateZ(90px)' }}>
+                                <div className="space-y-2" style={{ transform: 'translateZ(90px)' }}>
                                     <FormTextareaField 
                                         label="Academic Profile Brief" 
                                         name="message" 
@@ -373,13 +407,14 @@ export const MultiStepQuoteForm = () => {
                                         placeholder="OUTLINE YOUR GPA, SAT/IELTS SCORES, RESEARCH INTERESTS, AND TARGET UNIVERSITIES..." 
                                         value={formData.message} 
                                         onChange={handleChange} 
+                                        rows={3}
                                     />
                                 </div>
 
-                                <div className="pt-4" style={{ transform: 'translateZ(120px)' }}>
+                                <div className="pt-2" style={{ transform: 'translateZ(120px)' }}>
                                     <button
                                         type="submit"
-                                        className="group w-full bg-[#1e201b] text-[#fdfaf3] py-6 rounded-full font-bold tracking-[0.5em] uppercase text-[11px] flex items-center justify-center gap-6 transition-all duration-700 hover:bg-[#c5a56d] hover:text-[#1a1a1a] shadow-[0_20px_40px_-10px_rgba(197,165,109,0.4)] hover:shadow-[0_20px_50px_-5px_rgba(197,165,109,0.6)] relative overflow-hidden"
+                                        className="group w-full bg-[#1e201b] text-[#fdfaf3] py-4 rounded-full font-bold tracking-[0.5em] uppercase text-[11px] flex items-center justify-center gap-6 transition-all duration-700 hover:bg-[#d4af37] hover:text-[#1a1a1a] shadow-[0_20px_40px_-10px_rgba(212, 175, 55,0.4)] hover:shadow-[0_20px_50px_-5px_rgba(212, 175, 55,0.6)] relative overflow-hidden"
                                     >
                                         <span className="relative z-10 flex items-center gap-3">
                                             BEGIN YOUR JOURNEY
@@ -403,10 +438,10 @@ export const MultiStepQuoteForm = () => {
 const FormField = ({ label, icon: Icon, value, name, onChange, placeholder, required = false, type = "text" }: any) => {
     const [focused, setFocused] = useState(false);
     return (
-        <div className="space-y-3 group relative text-left">
-            <label className={`text-[11px] font-bold tracking-[0.4em] uppercase ml-2 transition-colors duration-500 ${focused ? 'text-[#c5a56d]' : 'text-[#1a1a1a]/80'}`}>{label}</label>
+        <div className="space-y-1.5 group relative text-left">
+            <label className={`text-[11px] font-bold tracking-[0.4em] uppercase ml-2 transition-colors duration-500 ${focused ? 'text-[#d4af37]' : 'text-[#1a1a1a]/80'}`}>{label}</label>
             <div className="relative">
-                <Icon className={`absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 transition-all duration-500 ${focused ? 'text-[#c5a56d] scale-110' : 'text-[#1a1a1a]/50'}`} />
+                <Icon className={`absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 transition-all duration-500 ${focused ? 'text-[#d4af37] scale-110' : 'text-[#1a1a1a]/50'}`} />
                 <input 
                     type={type}
                     name={name}
@@ -416,8 +451,8 @@ const FormField = ({ label, icon: Icon, value, name, onChange, placeholder, requ
                     required={required}
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
-                    className={`w-full border rounded-2xl pl-16 pr-6 py-5 text-[15px] focus:outline-none transition-all duration-500 font-serif italic text-[#1a1a1a] placeholder:text-[#1a1a1a]/40 shadow-sm
-                        ${focused ? 'bg-white border-[#c5a56d] shadow-[0_10px_40px_-10px_rgba(197,165,109,0.3)]' : 'bg-[#faf9f6] border-[#1a1a1a]/15 hover:border-[#1a1a1a]/30'}`}
+                    className={`w-full border rounded-2xl pl-14 pr-5 py-3.5 text-[15px] focus:outline-none transition-all duration-500 font-serif italic text-[#1a1a1a] placeholder:text-[#1a1a1a]/40 shadow-sm
+                        ${focused ? 'bg-white border-[#d4af37] shadow-[0_10px_40px_-10px_rgba(212, 175, 55,0.3)]' : 'bg-[#faf9f6] border-[#1a1a1a]/15 hover:border-[#1a1a1a]/30'}`}
                 />
             </div>
         </div>
@@ -427,10 +462,10 @@ const FormField = ({ label, icon: Icon, value, name, onChange, placeholder, requ
 const FormSelectField = ({ label, icon: Icon, value, name, onChange, options, required = false }: any) => {
     const [focused, setFocused] = useState(false);
     return (
-        <div className="space-y-3 group relative text-left">
-            <label className={`text-[11px] font-bold tracking-[0.4em] uppercase ml-2 transition-colors duration-500 ${focused ? 'text-[#c5a56d]' : 'text-[#1a1a1a]/80'}`}>{label}</label>
+        <div className="space-y-1.5 group relative text-left">
+            <label className={`text-[11px] font-bold tracking-[0.4em] uppercase ml-2 transition-colors duration-500 ${focused ? 'text-[#d4af37]' : 'text-[#1a1a1a]/80'}`}>{label}</label>
             <div className="relative">
-                <Icon className={`absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 transition-all duration-500 ${focused ? 'text-[#c5a56d] scale-110' : 'text-[#1a1a1a]/50'}`} />
+                <Icon className={`absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 transition-all duration-500 ${focused ? 'text-[#d4af37] scale-110' : 'text-[#1a1a1a]/50'}`} />
                 <select 
                     name={name}
                     value={value}
@@ -438,8 +473,8 @@ const FormSelectField = ({ label, icon: Icon, value, name, onChange, options, re
                     required={required}
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
-                    className={`w-full border rounded-2xl pl-16 pr-6 py-5 text-[13px] focus:outline-none transition-all duration-500 appearance-none font-serif italic uppercase text-[#1a1a1a] shadow-sm
-                        ${focused ? 'bg-white border-[#c5a56d] shadow-[0_10px_40px_-10px_rgba(197,165,109,0.3)]' : 'bg-[#faf9f6] border-[#1a1a1a]/15 hover:border-[#1a1a1a]/30'}
+                    className={`w-full border rounded-2xl pl-14 pr-8 py-3.5 text-[13px] focus:outline-none transition-all duration-500 appearance-none font-serif italic uppercase text-[#1a1a1a] shadow-sm
+                        ${focused ? 'bg-white border-[#d4af37] shadow-[0_10px_40px_-10px_rgba(212, 175, 55,0.3)]' : 'bg-[#faf9f6] border-[#1a1a1a]/15 hover:border-[#1a1a1a]/30'}
                         ${value === "" ? 'text-[#1a1a1a]/40' : 'text-[#1a1a1a]'}`}
                 >
                     {options.map((opt: any) => (
@@ -447,7 +482,7 @@ const FormSelectField = ({ label, icon: Icon, value, name, onChange, options, re
                     ))}
                 </select>
                 {/* Custom Chevron Indicator */}
-                <div className={`absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none font-mono text-[10px] tracking-widest font-bold transition-colors duration-500 ${focused ? 'text-[#c5a56d]' : 'text-[#1a1a1a]/50'}`}>▼</div>
+                <div className={`absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none font-mono text-[10px] tracking-widest font-bold transition-colors duration-500 ${focused ? 'text-[#d4af37]' : 'text-[#1a1a1a]/50'}`}>▼</div>
             </div>
         </div>
     );
@@ -456,10 +491,10 @@ const FormSelectField = ({ label, icon: Icon, value, name, onChange, options, re
 const FormTextareaField = ({ label, icon: Icon, value, name, onChange, placeholder, required = false, rows = 4 }: any) => {
     const [focused, setFocused] = useState(false);
     return (
-        <div className="space-y-3 group relative text-left">
-            <label className={`text-[11px] font-bold tracking-[0.4em] uppercase ml-2 transition-colors duration-500 ${focused ? 'text-[#c5a56d]' : 'text-[#1a1a1a]/80'}`}>{label}</label>
+        <div className="space-y-1.5 group relative text-left">
+            <label className={`text-[11px] font-bold tracking-[0.4em] uppercase ml-2 transition-colors duration-500 ${focused ? 'text-[#d4af37]' : 'text-[#1a1a1a]/80'}`}>{label}</label>
             <div className="relative">
-                <Icon className={`absolute left-6 top-6 w-5 h-5 transition-all duration-500 ${focused ? 'text-[#c5a56d] scale-110' : 'text-[#1a1a1a]/50'}`} />
+                <Icon className={`absolute left-5 top-4 w-5 h-5 transition-all duration-500 ${focused ? 'text-[#d4af37] scale-110' : 'text-[#1a1a1a]/50'}`} />
                 <textarea 
                     name={name}
                     value={value}
@@ -469,8 +504,8 @@ const FormTextareaField = ({ label, icon: Icon, value, name, onChange, placehold
                     rows={rows}
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
-                    className={`w-full border rounded-[24px] pl-16 pr-8 py-6 text-[15px] focus:outline-none transition-all duration-500 resize-none font-serif italic leading-relaxed text-[#1a1a1a] placeholder:text-[#1a1a1a]/40 shadow-sm
-                        ${focused ? 'bg-white border-[#c5a56d] shadow-[0_10px_40px_-10px_rgba(197,165,109,0.3)]' : 'bg-[#faf9f6] border-[#1a1a1a]/15 hover:border-[#1a1a1a]/30'}`}
+                    className={`w-full border rounded-2xl pl-14 pr-6 py-3.5 text-[15px] focus:outline-none transition-all duration-500 resize-none font-serif italic leading-relaxed text-[#1a1a1a] placeholder:text-[#1a1a1a]/40 shadow-sm
+                        ${focused ? 'bg-white border-[#d4af37] shadow-[0_10px_40px_-10px_rgba(212, 175, 55,0.3)]' : 'bg-[#faf9f6] border-[#1a1a1a]/15 hover:border-[#1a1a1a]/30'}`}
                 />
             </div>
         </div>

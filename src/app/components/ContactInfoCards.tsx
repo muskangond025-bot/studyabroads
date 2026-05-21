@@ -151,7 +151,7 @@ const contactInfoData = [
 
 export const ContactInfoCards = () => {
     return (
-        <section className="relative w-full bg-[#faf9f6] overflow-hidden py-16 md:py-24">
+        <section className="relative w-full bg-[#faf9f6] overflow-hidden pt-4 pb-16 md:pt-4 md:pb-16">
             {/* Background Texture */}
             <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
                 <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -176,12 +176,25 @@ export const ContactInfoCards = () => {
 const MobileGrid = ({ data }: { data: any[] }) => {
     return (
         <div className="max-w-7xl mx-auto px-8">
-            <div className="text-center mb-12 space-y-6">
+            <div className="text-center mb-8 space-y-4">
+                <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex items-center justify-center gap-3 mb-2"
+                >
+                    <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+                    <span className="text-[10px] font-extrabold tracking-[0.35em] text-[#d4af37] uppercase font-mono">
+                        07 / Support Portal
+                    </span>
+                    <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+                </motion.div>
                 <h2 
                     className="text-5xl md:text-7xl font-bold text-[#1a1a1a] tracking-tighter"
                     style={{ fontFamily: '"Playfair Display", serif' }}
                 >
-                    We're Here to <span className="italic">Help.</span>
+                    We're Here to <span className="font-light italic text-[#d4af37]">Help.</span>
                 </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -208,15 +221,28 @@ const InteractiveStackDeck = ({ data }: { data: any[] }) => {
             ref={containerRef} 
             className="w-full relative flex flex-col items-center"
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseLeave={() => { setIsHovered(false); }}
         >
             {/* Section Header HUD */}
-            <div className="text-center mb-16 space-y-6">
+            <div className="text-center mb-8 space-y-4">
+                <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex items-center justify-center gap-3 mb-2"
+                >
+                    <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+                    <span className="text-[10px] font-extrabold tracking-[0.35em] text-[#d4af37] uppercase font-mono">
+                        07 / Support Portal
+                    </span>
+                    <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+                </motion.div>
                 <h2 
                     className="text-6xl md:text-7xl font-bold text-[#1a1a1a] tracking-tighter"
                     style={{ fontFamily: '"Playfair Display", serif' }}
                 >
-                    We're Here to <span className="italic">Help.</span>
+                    We're Here to <span className="font-light italic text-[#d4af37]">Help.</span>
                 </h2>
             </div>
 

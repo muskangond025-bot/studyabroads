@@ -137,7 +137,7 @@ const IntegrityCard = ({
                 rotateY,
                 perspective: 1200
             }}
-            className="relative group bg-white/90 backdrop-blur-3xl p-10 rounded-[32px] border border-[#c5a56d]/30 hover:border-[#c5a56d]/85 hover:shadow-[0_30px_80px_-15px_rgba(197,165,109,0.15)] transition-all duration-500 overflow-hidden shadow-2xl shadow-neutral-200/50 w-full"
+            className="relative group bg-white/90 backdrop-blur-3xl p-10 rounded-[32px] border border-[#d4af37]/30 hover:border-[#d4af37]/85 hover:shadow-[0_30px_80px_-15px_rgba(212, 175, 55,0.15)] transition-all duration-500 overflow-hidden shadow-2xl shadow-neutral-200/50 w-full"
         >
             {/* Luminous Inner Glow */}
             <div className="absolute inset-0 rounded-[32px] pointer-events-none border border-white/60 z-10" />
@@ -146,13 +146,13 @@ const IntegrityCard = ({
             <motion.div 
                 animate={{ top: isHovered ? ["-100%", "200%"] : "-100%" }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-                className="absolute left-0 right-0 h-[120px] bg-gradient-to-b from-transparent via-[#c5a56d]/10 to-transparent z-0 pointer-events-none"
+                className="absolute left-0 right-0 h-[120px] bg-gradient-to-b from-transparent via-[#d4af37]/10 to-transparent z-0 pointer-events-none"
             />
 
             {/* Icon & Title Layer */}
             <div className="relative z-10 mb-8 flex items-end gap-6">
-                <div className="p-4 bg-white rounded-2xl border border-[#c5a56d]/20 group-hover:border-[#c5a56d]/50 transition-all duration-500 shadow-sm">
-                    <reason.icon className="w-8 h-8 text-[#c5a56d]" />
+                <div className="p-4 bg-white rounded-2xl border border-[#d4af37]/20 group-hover:border-[#d4af37]/50 transition-all duration-500 shadow-sm">
+                    <reason.icon className="w-8 h-8 text-[#d4af37]" />
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold text-[#000000] tracking-tighter" style={{ fontFamily: '"Playfair Display", serif' }}>
                     {reason.title}
@@ -189,7 +189,7 @@ export const WhyTrustUsSection = () => {
     return (
         <section
             ref={containerRef}
-            className="relative w-full py-20 md:py-32 bg-[#fdfbf7] overflow-hidden"
+            className="relative w-full pt-4 pb-12 md:pt-6 md:pb-16 bg-[#fdfbf7] overflow-hidden"
         >
             {/* Background Atmosphere */}
             <div className="absolute inset-0 z-0">
@@ -201,28 +201,35 @@ export const WhyTrustUsSection = () => {
                         <rect width="100%" height="100%" filter="url(#noiseTrustBright)" />
                     </svg>
                 </div>
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,rgba(197,165,109,0.02)_0%,transparent_50%)]" />
-                <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_70%,rgba(197,165,109,0.01)_0%,transparent_50%)]" />
+                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,rgba(212, 175, 55,0.02)_0%,transparent_50%)]" />
+                <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_70%,rgba(212, 175, 55,0.01)_0%,transparent_50%)]" />
             </div>
 
             <div className="relative z-10 container mx-auto px-8 max-w-7xl">
                 {/* High-Fidelity Header Sequence */}
-                <div className="max-w-5xl mb-20 md:mb-28 text-left">
+                <div className="max-w-3xl mx-auto mb-4 md:mb-6 text-center flex flex-col items-center justify-center">
                     <motion.div 
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        className="flex items-center gap-4 mb-8"
+                        initial={{ opacity: 0, scaleX: 0 }}
+                        whileInView={{ opacity: 1, scaleX: 1 }}
+                        className="flex items-center justify-center gap-3 mb-1"
                     >
-                        <div className="w-12 h-[1px] bg-[#c5a56d]" />
+                        <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+                        <span className="text-[10px] font-extrabold tracking-[0.35em] text-[#d4af37] uppercase font-mono">
+                            05 / Core Strengths
+                        </span>
+                        <div className="w-12 h-[1px] bg-[#d4af37]/30" />
                     </motion.div>
 
-                    <h2 
-                        className="text-6xl md:text-[9rem] font-bold text-[#1a1a1a] tracking-tighter leading-[0.9] mb-12"
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a1a1a] tracking-tight leading-tight text-center"
                         style={{ fontFamily: '"Playfair Display", serif' }}
                     >
-                        Pillars of <br />
-                        <span className="text-[#c5a56d]">Excellence</span>
-                    </h2>
+                        Pillars of <span className="font-light italic text-[#d4af37]">Excellence</span>
+                    </motion.h2>
                 </div>
 
                 {/* Grid Container containing Stack-to-Grid Cards */}

@@ -211,7 +211,7 @@ export const VenueCardsGrid = () => {
     const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null);
 
     return (
-        <section className="relative w-full py-32 md:py-48 bg-[#faf9f6] overflow-hidden">
+        <section className="relative w-full pt-16 pb-24 md:pt-16 md:pb-24 bg-[#faf9f6] overflow-hidden">
             {/* Ambient Background Grid */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                 <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -226,11 +226,11 @@ export const VenueCardsGrid = () => {
 
             <div className="container mx-auto px-8 relative z-10">
                 {/* Section Header */}
-                <div className="max-w-4xl mx-auto text-center mb-32">
+                <div className="max-w-4xl mx-auto text-center mb-16">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="flex items-center justify-center gap-6 mb-8"
+                        className="flex items-center justify-center gap-6 mb-6"
                     >
                         <div className="w-12 h-[1px] bg-[#d4af37]" />
                         <span className="text-[10px] font-bold tracking-[1em] text-[#d4af37] uppercase italic">Scholarship Exhibition</span>
@@ -238,7 +238,7 @@ export const VenueCardsGrid = () => {
                     </motion.div>
 
                     <h2 
-                        className="text-6xl md:text-8xl font-bold text-[#1a1a1a] tracking-tighter leading-none mb-12"
+                        className="text-6xl md:text-8xl font-bold text-[#1a1a1a] tracking-tighter leading-none mb-4"
                         style={{ fontFamily: '"Playfair Display", serif' }}
                     >
                         {"Elite Scholarships".split(' ').map((word, i) => (
@@ -247,7 +247,7 @@ export const VenueCardsGrid = () => {
                                     initial={{ y: "100%" }}
                                     whileInView={{ y: 0 }}
                                     transition={{ duration: 1, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                    className="inline-block"
+                                    className={`inline-block ${word === 'Scholarships' ? 'font-light italic text-[#d4af37]' : ''}`}
                                 >
                                     {word}
                                 </motion.span>

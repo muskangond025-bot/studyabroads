@@ -68,7 +68,7 @@ export const CallToAction = () => {
                 
                 {isDesktop ? (
                     /* Desktop View: Premium 3D Tri-Fold Map Unfolding */
-                    <div className="relative w-full max-w-6xl mx-auto h-[520px] mb-6" style={{ perspective: 3500, transformStyle: "preserve-3d" }}>
+                    <div className="relative w-full max-w-[1000px] mx-auto h-[380px] mb-6" style={{ perspective: 3500, transformStyle: "preserve-3d" }}>
                         <motion.div
                             initial={{ 
                                 opacity: 0, 
@@ -107,7 +107,7 @@ export const CallToAction = () => {
                                     width: "33.333%",
                                     height: "100%",
                                 }}
-                                className="absolute left-0 top-0 p-10 flex flex-col justify-between bg-white border-y border-l border-[#d4af37]/35 rounded-l-[30px] relative group"
+                                className="absolute left-0 top-0 py-6 px-7 flex flex-col justify-between bg-white border-y border-l border-[#d4af37]/35 rounded-l-[30px] relative group"
                             >
                                 {/* Background wrapper to clip decorative elements without clipping children */}
                                 <div className="absolute inset-0 overflow-hidden rounded-l-[30px] pointer-events-none z-0">
@@ -124,20 +124,20 @@ export const CallToAction = () => {
                                     className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-r from-black/40 to-transparent pointer-events-none z-20" 
                                 />
                                 
-                                <div className="flex items-center gap-2 text-[#d4af37] border-b border-[#d4af37]/20 pb-4 relative z-10">
-                                    <Compass className="w-5 h-5 text-[#d4af37]" />
-                                    <span className="text-[10px] font-mono tracking-[0.3em] uppercase">01 / DISCOVERY PLAN</span>
+                                <div className="flex items-center gap-2 text-[#d4af37] border-b border-[#d4af37]/20 pb-3 relative z-10">
+                                    <Compass className="w-4 h-4 text-[#d4af37]" />
+                                    <span className="text-[9px] font-mono tracking-[0.3em] uppercase">01 / DISCOVERY PLAN</span>
                                 </div>
 
-                                <div className="flex-1 flex flex-col justify-center py-6 relative z-10">
+                                <div className="flex-1 flex flex-col justify-center py-4 relative z-10">
                                     <h2 
-                                        className="text-5xl font-bold text-[#1a1a1a] tracking-tighter leading-[1.05]"
+                                        className="text-3xl lg:text-4xl font-bold text-[#1a1a1a] tracking-tighter leading-[1.05]"
                                         style={{ fontFamily: '"Playfair Display", serif' }}
                                     >
                                         Initiate Your <br />
                                         <span className="text-[#d4af37] drop-shadow-sm">Journey</span>
                                     </h2>
-                                    <div className="w-12 h-[1.5px] bg-[#d4af37] mt-6" />
+                                    <div className="w-12 h-[1.5px] bg-[#d4af37] mt-4" />
                                 </div>
 
                                 <div className="relative z-10 flex items-center justify-between text-[9px] text-[#1a1a1a]/40 font-mono tracking-widest uppercase">
@@ -160,7 +160,7 @@ export const CallToAction = () => {
                                         width: "100%",
                                         height: "100%",
                                     }}
-                                    className="p-10 flex flex-col justify-between bg-white border-y border-[#d4af37]/35 relative"
+                                    className="py-6 px-7 flex flex-col justify-between bg-white border-y border-[#d4af37]/35 relative"
                                 >
                                     {/* Background wrapper to clip decorative elements without clipping children */}
                                     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -177,14 +177,14 @@ export const CallToAction = () => {
                                         className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-r from-black/40 to-transparent pointer-events-none z-20" 
                                     />
 
-                                    <div className="flex items-center gap-2 text-[#d4af37] border-b border-[#d4af37]/20 pb-4 relative z-10">
-                                        <Activity className="w-4 h-4 text-[#d4af37]" />
-                                        <span className="text-[10px] font-mono tracking-[0.3em] uppercase">02 / CORE METRICS</span>
+                                    <div className="flex items-center gap-2 text-[#d4af37] border-b border-[#d4af37]/20 pb-3 relative z-10">
+                                        <Activity className="w-3.5 h-3.5 text-[#d4af37]" />
+                                        <span className="text-[9px] font-mono tracking-[0.3em] uppercase">02 / CORE METRICS</span>
                                     </div>
 
-                                    <div className="flex-1 flex flex-col justify-center py-6 relative z-10">
+                                    <div className="flex-1 flex flex-col justify-center py-4 relative z-10">
                                         <p 
-                                            className="text-lg md:text-xl text-[#1a1a1a]/85 font-medium italic leading-relaxed"
+                                            className="text-sm lg:text-base text-[#1a1a1a]/85 font-medium italic leading-relaxed"
                                             style={{ fontFamily: '"Playfair Display", serif' }}
                                         >
                                             "Where elite academic strategy meets the curated pathways of world-class educational leadership."
@@ -192,7 +192,7 @@ export const CallToAction = () => {
                                     </div>
 
                                     {/* Counters block nested nicely in Panel 2 */}
-                                    <div className="grid grid-cols-3 gap-4 pt-4 border-t border-[#d4af37]/20 relative z-10">
+                                    <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#d4af37]/20 relative z-10">
                                         {[
                                             { val: 500, suffix: "+", label: "PLACEMENTS" },
                                             { val: 99, suffix: "%", label: "SUCCESS" },
@@ -217,7 +217,7 @@ export const CallToAction = () => {
                                             width: "100%",
                                             height: "100%",
                                         }}
-                                        className="p-10 flex flex-col justify-between bg-white border-y border-r border-[#d4af37]/35 rounded-r-[30px] relative"
+                                        className="py-6 px-7 flex flex-col justify-between bg-white border-y border-r border-[#d4af37]/35 rounded-r-[30px] relative"
                                     >
                                         {/* Background wrapper to clip decorative elements without clipping children */}
                                         <div className="absolute inset-0 overflow-hidden rounded-r-[30px] pointer-events-none z-0">
@@ -226,21 +226,21 @@ export const CallToAction = () => {
                                             <div className="absolute -right-8 -top-8 w-40 h-40 border border-dashed border-[#d4af37]/15 rounded-full animate-[spin_100s_linear_infinite]" />
                                         </div>
 
-                                        <div className="flex items-center justify-between text-[#d4af37] border-b border-[#d4af37]/20 pb-4 relative z-10">
-                                            <span className="text-[10px] font-mono tracking-[0.3em] uppercase">03 / GATEWAY TERMINAL</span>
-                                            <ShieldCheck className="w-4 h-4" />
+                                        <div className="flex items-center justify-between text-[#d4af37] border-b border-[#d4af37]/20 pb-3 relative z-10">
+                                            <span className="text-[9px] font-mono tracking-[0.3em] uppercase">03 / GATEWAY TERMINAL</span>
+                                            <ShieldCheck className="w-3.5 h-3.5" />
                                         </div>
 
                                         {/* Dynamic interactive elements inside Panel 3 */}
-                                        <div className="flex-1 flex flex-col justify-center items-center lg:items-end gap-5 py-6 relative z-10">
+                                        <div className="flex-1 flex flex-col justify-center items-center lg:items-end gap-4 py-4 relative z-10">
                                             <motion.button 
                                                 whileHover={{ scale: 1.04 }}
                                                 whileTap={{ scale: 0.96 }}
-                                                className="group relative w-full py-4 bg-[#d4af37] text-white rounded-full flex items-center justify-center gap-4 shadow-[0_15px_40px_-10px_rgba(212,175,55,0.45)] hover:shadow-[0_25px_60px_-10px_rgba(212,175,55,0.6)] transition-all duration-700 overflow-hidden cursor-pointer"
+                                                className="group relative w-full py-3 bg-[#d4af37] text-white rounded-full flex items-center justify-center gap-3 shadow-[0_12px_30px_-8px_rgba(212,175,55,0.45)] hover:shadow-[0_20px_50px_-8px_rgba(212,175,55,0.6)] transition-all duration-700 overflow-hidden cursor-pointer"
                                             >
-                                                <Calendar className="w-5 h-5" />
-                                                <span className="text-sm font-bold tracking-[0.2em] uppercase">Begin Consultation</span>
-                                                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
+                                                <Calendar className="w-4 h-4" />
+                                                <span className="text-xs font-bold tracking-[0.2em] uppercase">Begin Consultation</span>
+                                                <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-500" />
                                                 
                                                 <motion.div 
                                                     animate={{ x: ["-100%", "200%"] }}
@@ -250,30 +250,30 @@ export const CallToAction = () => {
                                             </motion.button>
                                         </div>
 
-                                        <div className="space-y-3 relative z-10 w-full">
+                                        <div className="space-y-2 relative z-10 w-full">
                                             <motion.div 
                                                 whileHover={{ x: -6 }}
-                                                className="flex items-center gap-3 group cursor-pointer justify-end"
+                                                className="flex items-center gap-2.5 group cursor-pointer justify-end"
                                             >
                                                 <div className="text-right">
-                                                    <p className="text-[8px] font-bold text-[#d4af37] tracking-[0.6em] uppercase">Hotline</p>
-                                                    <p className="text-base font-bold text-[#1a1a1a] tracking-widest">+1 (555) 123-4567</p>
+                                                    <p className="text-[7px] font-bold text-[#d4af37] tracking-[0.6em] uppercase">Hotline</p>
+                                                    <p className="text-xs md:text-sm font-bold text-[#1a1a1a] tracking-widest">+1 (555) 123-4567</p>
                                                 </div>
-                                                <div className="w-11 h-11 rounded-full border border-[#1a1a1a]/10 flex items-center justify-center group-hover:border-[#d4af37] bg-white transition-all duration-500 shadow-sm group-hover:shadow-md">
-                                                    <Phone className="w-4 h-4 text-[#1a1a1a]/60 group-hover:text-[#d4af37] transition-colors" />
+                                                <div className="w-9 h-9 rounded-full border border-[#1a1a1a]/10 flex items-center justify-center group-hover:border-[#d4af37] bg-white transition-all duration-500 shadow-sm group-hover:shadow-md">
+                                                    <Phone className="w-3.5 h-3.5 text-[#1a1a1a]/60 group-hover:text-[#d4af37] transition-colors" />
                                                 </div>
                                             </motion.div>
                                             
                                             <motion.div 
                                                 whileHover={{ x: -6 }}
-                                                className="flex items-center gap-3 group cursor-pointer justify-end"
+                                                className="flex items-center gap-2.5 group cursor-pointer justify-end"
                                             >
                                                 <div className="text-right">
-                                                    <p className="text-[8px] font-bold text-[#d4af37] tracking-[0.6em] uppercase">Admissions Desk</p>
-                                                    <p className="text-base font-bold text-[#1a1a1a] tracking-widest">advisors@globalpath.com</p>
+                                                    <p className="text-[7px] font-bold text-[#d4af37] tracking-[0.6em] uppercase">Admissions Desk</p>
+                                                    <p className="text-xs md:text-sm font-bold text-[#1a1a1a] tracking-widest">advisors@globalpath.com</p>
                                                 </div>
-                                                <div className="w-11 h-11 rounded-full border border-[#1a1a1a]/10 flex items-center justify-center group-hover:border-[#d4af37] bg-white transition-all duration-500 shadow-sm group-hover:shadow-md">
-                                                    <Mail className="w-4 h-4 text-[#1a1a1a]/60 group-hover:text-[#d4af37] transition-colors" />
+                                                <div className="w-9 h-9 rounded-full border border-[#1a1a1a]/10 flex items-center justify-center group-hover:border-[#d4af37] bg-white transition-all duration-500 shadow-sm group-hover:shadow-md">
+                                                    <Mail className="w-3.5 h-3.5 text-[#1a1a1a]/60 group-hover:text-[#d4af37] transition-colors" />
                                                 </div>
                                             </motion.div>
                                         </div>
@@ -295,7 +295,7 @@ export const CallToAction = () => {
                             rotateY: isHovered ? rotateY : 0,
                             perspective: 2000
                         }}
-                        className="relative w-full max-w-6xl bg-white/80 backdrop-blur-3xl rounded-3xl border border-[#d4af37]/30 py-10 px-8 shadow-[0_60px_100px_-30px_rgba(212,175,55,0.15)] overflow-hidden flex flex-col items-center justify-center gap-8 transition-all duration-700 hover:border-[#d4af37]/60 group"
+                        className="relative w-full max-w-[1000px] bg-white/80 backdrop-blur-3xl rounded-3xl border border-[#d4af37]/30 py-8 px-6 shadow-[0_60px_100px_-30px_rgba(212,175,55,0.15)] overflow-hidden flex flex-col items-center justify-center gap-6 transition-all duration-700 hover:border-[#d4af37]/60 group"
                     >
                         {/* Interactive Reveal Glow */}
                         <motion.div 
@@ -343,11 +343,11 @@ export const CallToAction = () => {
                         </div>
 
                         {/* Mobile Action Hub */}
-                        <div className="w-full flex flex-col gap-6 items-center relative z-10">
+                        <div className="w-full flex flex-col gap-4 items-center relative z-10">
                             <motion.button 
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.97 }}
-                                className="group relative w-full max-w-md py-5 bg-[#d4af37] text-white rounded-full flex items-center justify-center gap-4 shadow-[0_15px_40px_-10px_rgba(212,175,55,0.45)] transition-all duration-700 overflow-hidden cursor-pointer"
+                                className="group relative w-full max-w-md py-3.5 bg-[#d4af37] text-white rounded-full flex items-center justify-center gap-4 shadow-[0_15px_40px_-10px_rgba(212,175,55,0.45)] transition-all duration-700 overflow-hidden cursor-pointer"
                             >
                                 <Calendar className="w-5 h-5" />
                                 <span className="text-base font-bold tracking-[0.2em] uppercase">Begin Consultation</span>
@@ -363,7 +363,7 @@ export const CallToAction = () => {
                             <div className="w-full max-w-md grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                                 <motion.div 
                                     whileHover={{ y: -4 }}
-                                    className="flex items-center gap-3 group cursor-pointer justify-center p-3 rounded-2xl bg-white border border-[#1a1a1a]/5 hover:border-[#d4af37] transition-all duration-300 shadow-sm"
+                                    className="flex items-center gap-3 group cursor-pointer justify-center p-2 rounded-2xl bg-white border border-[#1a1a1a]/5 hover:border-[#d4af37] transition-all duration-300 shadow-sm"
                                 >
                                     <div className="w-10 h-10 rounded-full border border-[#1a1a1a]/5 flex items-center justify-center bg-[#fdfaf3]">
                                         <Phone className="w-4 h-4 text-[#d4af37]" />
@@ -376,7 +376,7 @@ export const CallToAction = () => {
                                 
                                 <motion.div 
                                     whileHover={{ y: -4 }}
-                                    className="flex items-center gap-3 group cursor-pointer justify-center p-3 rounded-2xl bg-white border border-[#1a1a1a]/5 hover:border-[#d4af37] transition-all duration-300 shadow-sm"
+                                    className="flex items-center gap-3 group cursor-pointer justify-center p-2 rounded-2xl bg-white border border-[#1a1a1a]/5 hover:border-[#d4af37] transition-all duration-300 shadow-sm"
                                 >
                                     <div className="w-10 h-10 rounded-full border border-[#1a1a1a]/5 flex items-center justify-center bg-[#fdfaf3]">
                                         <Mail className="w-4 h-4 text-[#d4af37]" />
@@ -418,12 +418,12 @@ const Counter = ({ target, suffix, label }: { target: number, suffix: string, la
     }, [isInView, target]);
 
     return (
-        <div className="flex flex-col gap-1 min-w-[90px] text-left">
+        <div className="flex flex-col gap-0.5 min-w-[75px] text-left">
             <div className="flex items-baseline">
-                <span ref={nodeRef} className="text-3xl font-bold text-[#1a1a1a]" style={{ fontFamily: '"Playfair Display", serif' }}>0</span>
-                <span className="text-xl font-bold text-[#d4af37]" style={{ fontFamily: '"Playfair Display", serif' }}>{suffix}</span>
+                <span ref={nodeRef} className="text-2xl font-bold text-[#1a1a1a]" style={{ fontFamily: '"Playfair Display", serif' }}>0</span>
+                <span className="text-lg font-bold text-[#d4af37]" style={{ fontFamily: '"Playfair Display", serif' }}>{suffix}</span>
             </div>
-            <span className="text-[7px] font-bold tracking-[0.4em] text-[#d4af37] uppercase">{label}</span>
+            <span className="text-[6.5px] font-bold tracking-[0.3em] text-[#d4af37] uppercase">{label}</span>
         </div>
     );
 };
