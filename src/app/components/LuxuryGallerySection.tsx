@@ -70,7 +70,7 @@ export const LuxuryGallerySection = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative w-full pt-24 pb-0 bg-[#fdfaf3] overflow-hidden">
+        <section ref={containerRef} className="relative w-full pt-10 pb-0 bg-[#fdfaf3] md:pt-12 overflow-hidden">
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                 <svg width="100%" height="100%">
                     <defs>
@@ -83,11 +83,14 @@ export const LuxuryGallerySection = () => {
             </div>
 
             <div className="container mx-auto px-8 relative z-10">
-                <div className="mb-24 flex flex-col items-center lg:items-start">
-                    <div className="gallery-title-line text-[#d4af37] tracking-[0.8em] text-[10px] uppercase font-bold mb-6">Admissions Registry</div>
-                    <h2 className="gallery-title-line text-6xl md:text-9xl font-serif italic text-[#1a1a1a] leading-[0.9] tracking-tighter">
+                <div className="mb-10 md:mb-14 flex flex-col items-center lg:items-start text-center lg:text-left">
+                    <div className="gallery-title-line text-[#d4af37] tracking-[0.8em] text-[10px] uppercase font-bold mb-3 md:mb-4">Admissions Registry</div>
+                    <h2 
+                        className="gallery-title-line text-5xl md:text-7xl lg:text-8xl font-bold text-[#1a1a1a] tracking-tight leading-[1.05]"
+                        style={{ fontFamily: '"Playfair Display", serif' }}
+                    >
                         The Admissions <br />
-                        <span className="not-italic text-[#d4af37] ml-8 md:ml-24">Exhibition.</span>
+                        <span className="font-light italic text-[#d4af37] lg:ml-16">Exhibition.</span>
                     </h2>
                 </div>
 
