@@ -81,7 +81,7 @@ const testimonials: Testimonial[] = [
 
 export const ClientTestimonials = () => {
     return (
-        <section className="relative w-full bg-[#F8F9FA] py-24 md:py-32 overflow-hidden flex flex-col items-center">
+        <section className="relative w-full bg-[#F8F9FA] pt-12 pb-16 md:pt-16 md:pb-24 overflow-hidden flex flex-col items-center">
             
             <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -99,12 +99,12 @@ export const ClientTestimonials = () => {
             </div>
 
             <div className="container mx-auto px-8 relative z-10">
-                <div className="text-center mb-24 space-y-6">
+                <div className="text-center mb-10 md:mb-12 space-y-4">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="flex items-center justify-center gap-6 mb-8"
+                        className="flex items-center justify-center gap-6 mb-3"
                     >
                         <div className="w-12 h-[1px] bg-[#D4AF37]" />
                         <span className="text-[10px] font-bold tracking-[1em] text-[#D4AF37] uppercase italic" style={{ fontFamily: '"Outfit", sans-serif' }}>Testimonials</span>
@@ -112,14 +112,14 @@ export const ClientTestimonials = () => {
                     </motion.div>
 
                     <h2 
-                        className="text-5xl md:text-7xl font-bold text-[#1a1a1a] tracking-tight leading-tight"
-                        style={{ fontFamily: '"Outfit", sans-serif' }}
+                        className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a1a1a] tracking-tight leading-tight"
+                        style={{ fontFamily: '"Playfair Display", serif' }}
                     >
-                        Scholar Testimonials
+                        Scholar <span className="font-light italic text-[#D4AF37]">Testimonials</span>
                     </h2>
                     <p 
-                        className="text-lg md:text-xl text-[#666666] font-light max-w-2xl mx-auto"
-                        style={{ fontFamily: '"Outfit", sans-serif' }}
+                        className="text-base md:text-lg text-[#1a1a1a]/40 font-light italic max-w-2xl mx-auto leading-relaxed"
+                        style={{ fontFamily: '"Playfair Display", serif' }}
                     >
                         "Authentic reports from the successful international study pathways we've helped shape."
                     </p>
